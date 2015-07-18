@@ -8,7 +8,9 @@ var r1_name = "";
 var r2_name = "";
 var r3_name = "";
 
-var p1_comp = ["", "", ""]
+var p1_comp = ["", "", ""];
+var p2_comp = ["", "", ""]
+var p3_comp = ["", "", ""]
 
 $(function() {
     $( "#player_room_submit" ).click(function(){
@@ -31,13 +33,13 @@ $(function() {
         r2_name = "Second Room";
         r3_name = "Room 3";
 
-        $( "#print_p1" ).append( p1_name );
-        $( "#print_p2" ).append( p2_name );
-        $( "#print_p3" ).append( p3_name );
+        $( ".print_p1" ).append( p1_name );
+        $( ".print_p2" ).append( p2_name );
+        $( ".print_p3" ).append( p3_name );
 
-        $( "#print_r1" ).append( r1_name );
-        $( "#print_r2" ).append( r2_name );
-        $( "#print_r3" ).append( r3_name );
+        $( ".print_r1" ).append( r1_name );
+        $( ".print_r2" ).append( r2_name );
+        $( ".print_r3" ).append( r3_name );
     });
 });
 
