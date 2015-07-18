@@ -70,3 +70,9 @@ $(function() {
 
     });
 });
+
+$(function() {
+    $( "#p3_submit" ).click(function(){
+        p3_fav = $('input[name=p3_fav]:checked').val();
+    });
+});
