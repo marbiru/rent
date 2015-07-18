@@ -10,7 +10,7 @@ var r1_name = "";
 var r2_name = "";
 var r3_name = "";
 
-// the main array for storing prices and room names. Updated often
+// the main array for storing prices and room names. It gets updated after each player's move. It is an array of three arrays, each of which has the name of a room and then that room's current rent/price 
 
 var rooms_prices = [
     [r1_name,""],
@@ -98,15 +98,23 @@ $( ".print_comp_r3" ).append( rooms_prices[2][1] );
 
 $(function() {
     $( "#p2_submit" ).click(function(){
-    
+        
+        p2_runner_up = $('input[name=p2_runner_up]:checked').val();
+        console.log(p2_runner_up)
+        var p2_runner_up_array = rooms_prices[p2_runner_up];
+        rooms_prices.splice(p2_runner_up, 1);
+        rooms_prices.unshift(p2_runner_up_array);
+
         p2_fav = $('input[name=p2_fav]:checked').val();
         var p2_fav_array = rooms_prices[p2_fav];
         rooms_prices.splice(p2_fav, 1);
-        console.log(rooms_prices);
         rooms_prices.unshift(p2_fav_array);
-    	p2_runner_up = $('input[name=p2_runner_up]:checked').val();
+            	
     	side_pot = $( "#side_pot" ).val();
 
+        rooms_prices[0][1] = rooms_prices[0][1] + side_pot;
+
+        console.log(rooms_prices);
     });
 });
 
