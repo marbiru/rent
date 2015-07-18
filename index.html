@@ -70,17 +70,7 @@
 
 	<p> Ok, thanks <span class="print_p1"></span>! Now, <span class="print_p2"></span>, you're up next.</p>
 
-	<p><span class="print_p2"></span>, you currently have three "offers" of rooms + compensation:</p>
-
-	<p>
-		Option 1: <span class="print_r1"></span> + $<span class="print_comp_r1"></span>
-		<br />
-		Option 2: <span class="print_r2"></span> + $<span class="print_comp_r2"></span>
-		<br />
-		Option 3: <span class="print_r3"></span> + $<span class="print_comp_r3"></span>
-	</p>
-
-	<p>Please pick the best deal for you and the second-best deal.</p>
+	<p><span class="print_p2"></span>, you currently have three "offers" of rooms + compensation. Please pick the best deal for you and the second-best deal:</p>
 
 	<p>
 		BEST DEAL:
@@ -118,28 +108,16 @@
 
 	<p> Ok, thanks <span class="print_p2"></span>! Now, <span class="print_p3"></span>, you're up next.</p>
 
-	<p><span class="print_p3"></span>, you currently have three "offers" of rooms + compensation:</p>
-
-	<p>
-		<!-- change this to include p2's adjustment  -->
-		Option 1: <span class="print_r1"></span> + $<span class="print_comp_r1"></span>
-		<br />
-		Option 2: <span class="print_r2"></span> + $<span class="print_comp_r2"></span>
-		<br />
-		Option 3: <span class="print_r3"></span> + $<span class="print_comp_r3"></span>
-	</p>
-
-	<p>Please pick the best deal for you:.</p>
+	<p><span class="print_p3"></span>, you currently have three "offers" of rooms + compensation. Please pick the best deal for you:</p>
 
 	<p>
 		BEST DEAL:
 		<br />
-		<input type="radio" name="p3_fav" value="r1"> Option 1
+		<input type="radio" name="p3_fav" value="0">Option 1: <span class="print_fav_room"></span> + $<span class="print_comp_fav"></span>
 		<br />
-		<input type="radio" name="p3_fav" value="r2"> Option 2
+		<input type="radio" name="p3_fav" value="1">Option 2: <span class="print_mid_room"></span> + $<span class="print_comp_mid"></span>
 		<br />
-		<input type="radio" name="p3_fav" value="r3">
-		Option 3
+		<input type="radio" name="p3_fav" value="2">Option 3: <span class="print_worst_room"></span> + $<span class="print_comp_worst"></span>
 	</p>
 	<p>
 		<button id="p3_submit">Submit!</button>

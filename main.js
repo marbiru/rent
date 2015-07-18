@@ -100,7 +100,6 @@ $(function() {
     $( "#p2_submit" ).click(function(){
         
         p2_runner_up = $('input[name=p2_runner_up]:checked').val();
-        console.log(p2_runner_up)
         var p2_runner_up_array = rooms_prices[p2_runner_up];
         rooms_prices.splice(p2_runner_up, 1);
         rooms_prices.unshift(p2_runner_up_array);
@@ -110,19 +109,31 @@ $(function() {
         rooms_prices.splice(p2_fav, 1);
         rooms_prices.unshift(p2_fav_array);
             	
-    	side_pot = $( "#side_pot" ).val();
-
+    	side_pot = parseInt($( "#side_pot" ).val());
         rooms_prices[0][1] = rooms_prices[0][1] + side_pot;
 
-        console.log(rooms_prices);
+        $( ".print_fav_room" ).append( rooms_prices[0][0] );
+        $( ".print_mid_room" ).append( rooms_prices[1][0] );
+        $( ".print_worst_room" ).append( rooms_prices[2][0] );
+
+        $( ".print_comp_fav" ).append( rooms_prices[0][1] );
+        $( ".print_comp_mid" ).append( rooms_prices[1][1] );
+        $( ".print_comp_worst" ).append( rooms_prices[2][1] );
     });
 });
-
-// dummy filled-in final array
 
 $(function() {
     $( "#p3_submit" ).click(function(){
         p3_fav = $('input[name=p3_fav]:checked').val();
+        var p3_fav_array = rooms_prices[p3_fav];
+        rooms_prices.splice(p3_fav, 1);
+        rooms_prices.unshift(p3_fav_array);
+
+        //redistributing the side pot
+        rooms_prices[0][1] = rooms_prices[0][1] - side_pot/3.0;
+        rooms_prices[1][1] = rooms_prices[1][1] - side_pot/3.0;
+        rooms_prices[2][1] = rooms_prices[2][1] - side_pot/3.0;
+
 
         $( ".print_p3_room" ).append( rooms_prices[0][0] );
         $( ".print_p2_room" ).append( rooms_prices[1][0] );
