@@ -1,38 +1,59 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min-css">
 	<link rel="stylesheet" href="style.css">
 	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Raleway:200">
+	<link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 </head>
+
 <body>
 	<h1> The Rent Calculator </h1>
 	<h2> Divide the rent on an apartment so that each person feels she got the best deal in the house </h2>
 
-	<p>Welcome to the Rent Calculator Demo! <br />
+	<p>
+	  Welcome to the Rent Calculator Demo! <br />
 	  Are you sitting comfortably?  Then we'll begin. <br />
 	  First, please tell me the names of all the flatmates <br />
-	  [Demo version: must be three flatmates]</p>
+	  [Demo version: three player version only]
+	</p>
 
-	<form>
-	  First flatmate: <input type="text" name="player_one"><br />
-	  Second flatmate: <input type="text" name="player_two"><br />
-	  Third flatmate: <input type="text" name="player_three"><br />
-	  <br />
-	  Now, please give names to the three bedrooms (e.g. "the big room, the sunny room, the room by the kitchen")
-	  <br />
-	  <br />
-	  First room: <input type="text" name="room_one"><br />
-	  Second room: <input type="text" name="room_two"><br />
-	  Third room: <input type="text" name="room_three"><br />
-	  <input type="submit" value="Submit">
-	</form>
+	<p>
+	  First flatmate: <input type="text" id="p1_name"><br />
+	  Second flatmate: <input type="text" id="p2_name"><br />
+	  Third flatmate: <input type="text" id="p3_name">
+	</p>
+	<p>
+	  Now, please give names to the three bedrooms <br />
+	  (e.g. "the big room, the sunny room, the room by the kitchen")
+	</p>
+	<p>  
+	  First room: <input type="text" name="r1_name"><br />
+	  Second room: <input type="text" name="r2_name"><br />
+	  Third room: <input type="text" name="r3_name"><br />
+	</p>  
+	<p>
+	  <button id="player_room_submit">Submit!</button>
+	</p>
 
+
+<div id="section_2" class="new_section">
+
+	<p>Great, let's get started! <span id="print_p1"></span>, you're up first</p>
+
+	<p>First, please rank the rooms in the flat from your most favourite to least favourite (if there were no other considerations).  Got that?  Your favourite room is the one you'd most like to have in the apartment if there were no other considerations and if all rooms cost exactly the same.</p>
+
+
+</div>
 
 
 
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <script type="text/javascript" src="main.js"></script>
 
 </body>
 </html>
+
+
+
