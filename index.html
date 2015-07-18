@@ -41,27 +41,25 @@
 
 	<p>Great, let's get started! <span id="print_p1"></span>, you're up first</p>
 
-	<p>First, please rank the rooms in the flat from your most favourite (no. 1) to least favourite (no. 3), if there were no other consideration to consider.  Got that?  Your favourite room is the one you'd most like to have in the apartment if there were no other considerations and if all rooms cost exactly the same.
-		<br />
-		<br />
-		[DEMO: THIS INPUT IS NOT VALIDATED, PLEASE DO AS IT SAYS :)]
+	<p> Thanks! Ok, now please let us know how much you'd need to be compensated to take each of the rooms </p>
+
+	<p> 
+		<span id="print_r1"></span>:
+				<input type="range" id="p1r1_comp" min="0" max="300">
+				<br />
+			<span id="print_r2"></span>:
+				<input type="range" id="p1r2_comp" min="0" max="300">
+				<br />
+			<span id="print_r3"></span>:
+				<input type="range" id="p1r3_comp" min="0" max="3">
 	</p>
 	<p>
-		<span id="print_r1"></span>:
-			<input type="range" id="p1r1_rank" min="1" max="3">
-			<br />
-		<span id="print_r2"></span>:
-			<input type="range" id="p1r2_rank" min="1" max="3">
-			<br />
-		<span id="print_r3"></span>:
-			<input type="range" id="p1r3_rank" min="1" max="3">
+		<button id="p1_comp_submit">Submit!</button>
 	</p>
 
-
-
-
-
 </div>
+
+	<p>Comps: <span id="dummy"></span></p>
 
 
 

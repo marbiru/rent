@@ -1,9 +1,14 @@
+var total_rent = "";
+
 var p1_name = "";
 var p2_name = "";
 var p3_name = "";
+
 var r1_name = "";
 var r2_name = "";
 var r3_name = "";
+
+var p1_comp = ["", "", ""]
 
 $(function() {
     $( "#player_room_submit" ).click(function(){
@@ -15,7 +20,9 @@ $(function() {
         r2_name = $( "#r2_name" ).val();
         r3_name = $( "#r3_name" ).val(); */
         
-        // placeholder names!
+        // placeholder values!
+        total_rent = 1000;
+
         p1_name = "Lady 1";
         p2_name = "Mr 2";
         p3_name = "Player 3";
@@ -31,7 +38,16 @@ $(function() {
         $( "#print_r1" ).append( r1_name );
         $( "#print_r2" ).append( r2_name );
         $( "#print_r3" ).append( r3_name );
+    });
+});
 
+$(function() {
+    $( "#p1_comp_submit" ).click(function(){
+    	p1_comp[0] = $( "#p1r1_comp" ).val();
+    	p1_comp[1] = $( "#p1r2_comp" ).val();
+    	p1_comp[2] = $( "#p1r3_comp" ).val();
+
+    	$( "#dummy" ).append( p1_comp.join(", ") );
 
     });
 });
