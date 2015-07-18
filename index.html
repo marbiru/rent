@@ -11,6 +11,7 @@
 	<h1> The Rent Calculator </h1>
 	<h2> Divide the rent on an apartment so that each person feels she got the best deal in the house </h2>
 
+<div id="general_info" class="new_section">
 	<p>
 	  Welcome to the Rent Calculator Demo! <br />
 	  Are you sitting comfortably?  Then we'll begin. <br />
@@ -35,35 +36,76 @@
 	<p>
 	  <button id="player_room_submit">Submit!</button>
 	</p>
+</div>
 
-
-<div id="section_2" class="new_section">
+<div id="p1_choices" class="new_section">
 
 	<p>Great, let's get started! <span class="print_p1"></span>, you're up first</p>
 
 	<p> Thanks! Ok, now please let us know how much you'd need to be compensated to take each of the rooms </p>
 
 	<p> 
-		<span id="print_r1"></span>:
+		<span class="print_r1"></span>:
 				<input type="range" id="p1r1_comp" min="0" max="300">
 				<br />
-			<span id="print_r2"></span>:
+			<span class="print_r2"></span>:
 				<input type="range" id="p1r2_comp" min="0" max="300">
 				<br />
-			<span id="print_r3"></span>:
-				<input type="range" id="p1r3_comp" min="0" max="3">
+			<span class="print_r3"></span>:
+				<input type="range" id="p1r3_comp" min="0" max="300">
 	</p>
 	<p>
-		<button id="p1_comp_submit">Submit!</button>
+		<button id="p1_submit">Submit!</button>
 	</p>
 
 </div>
 
-<div id="section_3" class="new_section">
+<div id="p2_choices" class="new_section">
 
-	<p> Ok, thanks <span class="print_p1"></span>
+	<p> Ok, thanks <span class="print_p1"></span>! Now, <span class="print_p2"></span>, you're up next.</p>
 
+	<p><span class="print_p2"></span>, you currently have three "offers" of rooms + compensation:</p>
 
+	<p>
+		Option 1: <span class="print_r1"></span> + $<span class="print_comp_r1"></span>
+		<br />
+		Option 2: <span class="print_r2"></span> + $<span class="print_comp_r2"></span>
+		<br />
+		Option 3: <span class="print_r3"></span> + $<span class="print_comp_r3"></span>
+	</p>
+
+	<p>Please pick the best deal for you and the second-best deal.</p>
+
+	<p>
+		BEST DEAL:
+		<br />
+		<input type="radio" name="p2_fav" value="r1"> Option 1
+		<br />
+		<input type="radio" name="p2_fav" value="r2"> Option 2
+		<br />
+		<input type="radio" name="p2_fav" value="r3">
+		Option 3
+	</p>
+
+	<p>
+		SECOND-BEST DEAL:
+		<br />
+		<input type="radio" name="p2_runner_up" value="r1"> Option 1
+		<br />
+		<input type="radio" name="p2_runner_up" value="r2"> Option 2
+		<br />
+		<input type="radio" name="p2_runner_up" value="r3">
+		Option 3
+	</p>
+	
+	<p> Thanks! So: how much compensation would you add to the second-best deal in order to make it as good as the best deal?</p>
+
+	<p>
+		<input type="range" id="side_pot" min="0" max="300">
+	</p>
+	<p>
+		<button id="p2_submit">Submit!</button>
+	</p>
 
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>

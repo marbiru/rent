@@ -1,16 +1,22 @@
 var total_rent = "";
 
+// p1 is player 1, etc
 var p1_name = "";
 var p2_name = "";
 var p3_name = "";
 
+// r1 is room 1, etc
 var r1_name = "";
 var r2_name = "";
 var r3_name = "";
 
+// variables decided by player 1
 var p1_comp = ["", "", ""];
-var p2_comp = ["", "", ""]
-var p3_comp = ["", "", ""]
+
+// vars decided by player 2
+var p2_fav = "";
+var p2_runner_up = "";
+var side_pot = "";
 
 $(function() {
     $( "#player_room_submit" ).click(function(){
@@ -44,12 +50,23 @@ $(function() {
 });
 
 $(function() {
-    $( "#p1_comp_submit" ).click(function(){
+    $( "#p1_submit" ).click(function(){
     	p1_comp[0] = $( "#p1r1_comp" ).val();
     	p1_comp[1] = $( "#p1r2_comp" ).val();
     	p1_comp[2] = $( "#p1r3_comp" ).val();
 
-    	$( "#dummy" ).append( p1_comp.join(", ") );
+    	$( ".print_comp_r1" ).append( p1_comp[0] );
+        $( ".print_comp_r2" ).append( p1_comp[1] );
+        $( ".print_comp_r3" ).append( p1_comp[2] );
+
+    });
+});
+
+$(function() {
+    $( "#p2_submit" ).click(function(){
+    	p2_fav = $('input[name=p2_fav]:checked').val();
+    	p2_runner_up = $('input[name=p2_runner_up]:checked').val();
+    	side_pot = $( "#side_pot" ).val();
 
     });
 });
