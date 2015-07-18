@@ -18,6 +18,24 @@ var p2_fav = "";
 var p2_runner_up = "";
 var side_pot = "";
 
+
+// placeholder values!
+total_rent = 1000;
+
+p1_name = "Lady 1";
+p2_name = "Mr 2";
+p3_name = "Player 3";
+
+r1_name = "The First Room";
+r2_name = "Second Room";
+r3_name = "Room 3";
+
+$( ".print_p1" ).append( p1_name );
+$( ".print_p2" ).append( p2_name );
+$( ".print_p3" ).append( p3_name );
+
+//END PLACEHOLDER
+
 $(function() {
     $( "#player_room_submit" ).click(function(){
     	/* p1_name = $( "#p1_name" ).val();
@@ -27,17 +45,6 @@ $(function() {
         r1_name = $( "#r1_name" ).val();
         r2_name = $( "#r2_name" ).val();
         r3_name = $( "#r3_name" ).val(); */
-        
-        // placeholder values!
-        total_rent = 1000;
-
-        p1_name = "Lady 1";
-        p2_name = "Mr 2";
-        p3_name = "Player 3";
-        
-        r1_name = "The First Room";
-        r2_name = "Second Room";
-        r3_name = "Room 3";
 
         $( ".print_p1" ).append( p1_name );
         $( ".print_p2" ).append( p2_name );
@@ -71,8 +78,25 @@ $(function() {
     });
 });
 
+// dummy filled-in final array
+
+var rooms_prices = [
+    [r1_name, 350],
+    [r2_name, 400],
+    [r3_name, 250],
+    ];
+
 $(function() {
     $( "#p3_submit" ).click(function(){
         p3_fav = $('input[name=p3_fav]:checked').val();
+
+        $( ".print_p3_room" ).append( rooms_prices[0][0] );
+        $( ".print_p2_room" ).append( rooms_prices[1][0] );
+        $( ".print_p1_room" ).append( rooms_prices[2][0] );
+
+        $( ".print_p3_price" ).append( rooms_prices[0][1] );
+        $( ".print_p2_price" ).append( rooms_prices[1][1] );
+        $( ".print_p1_price" ).append( rooms_prices[2][1] );
+
     });
 });
