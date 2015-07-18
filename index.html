@@ -28,9 +28,9 @@
 	  (e.g. "the big room, the sunny room, the room by the kitchen")
 	</p>
 	<p>  
-	  First room: <input type="text" name="r1_name"><br />
-	  Second room: <input type="text" name="r2_name"><br />
-	  Third room: <input type="text" name="r3_name"><br />
+	  First room: <input type="text" id="r1_name"><br />
+	  Second room: <input type="text" id="r2_name"><br />
+	  Third room: <input type="text" id="r3_name"><br />
 	</p>  
 	<p>
 	  <button id="player_room_submit">Submit!</button>
@@ -41,7 +41,24 @@
 
 	<p>Great, let's get started! <span id="print_p1"></span>, you're up first</p>
 
-	<p>First, please rank the rooms in the flat from your most favourite to least favourite (if there were no other considerations).  Got that?  Your favourite room is the one you'd most like to have in the apartment if there were no other considerations and if all rooms cost exactly the same.</p>
+	<p>First, please rank the rooms in the flat from your most favourite (no. 1) to least favourite (no. 3), if there were no other consideration to consider.  Got that?  Your favourite room is the one you'd most like to have in the apartment if there were no other considerations and if all rooms cost exactly the same.
+		<br />
+		<br />
+		[DEMO: THIS INPUT IS NOT VALIDATED, PLEASE DO AS IT SAYS :)]
+	</p>
+	<p>
+		<span id="print_r1"></span>:
+			<input type="range" id="p1r1_rank" min="1" max="3">
+			<br />
+		<span id="print_r2"></span>:
+			<input type="range" id="p1r2_rank" min="1" max="3">
+			<br />
+		<span id="print_r3"></span>:
+			<input type="range" id="p1r3_rank" min="1" max="3">
+	</p>
+
+
+
 
 
 </div>
