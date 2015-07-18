@@ -34,6 +34,12 @@
 	  Third room: <input type="text" id="r3_name"><br />
 	</p>  
 	<p>
+		Now, please tell me what total rent for the apartment costs.
+	</p>
+	<p>
+	  Rent: <input type="number" id="total_rent"><br />
+	</p>
+	<p>
 	  <button id="player_room_submit">Submit!</button>
 	</p>
 </div>
@@ -42,7 +48,7 @@
 
 	<p>Great, let's get started! <span class="print_p1"></span>, you're up first</p>
 
-	<p> Thanks! Ok, now please let us know how much you'd need to be compensated to take each of the rooms </p>
+	<p> Thanks! Ok, now please let us know how much you'd need to be compensated to take each of the rooms.</p>
 
 	<p> 
 		<span class="print_r1"></span>:
@@ -79,23 +85,23 @@
 	<p>
 		BEST DEAL:
 		<br />
-		<input type="radio" name="p2_fav" value="r1"> Option 1
+		<input type="radio" name="p2_fav" value="0"> Option 1: <span class="print_r1"></span> + $<span class="print_comp_r1"></span>
 		<br />
-		<input type="radio" name="p2_fav" value="r2"> Option 2
+		<input type="radio" name="p2_fav" value="1"> Option 2: <span class="print_r2"></span> + $<span class="print_comp_r2"></span>
 		<br />
-		<input type="radio" name="p2_fav" value="r3">
-		Option 3
+		<input type="radio" name="p2_fav" value="2">
+		Option 3: <span class="print_r3"></span> + $<span class="print_comp_r3"></span>
 	</p>
 
 	<p>
 		SECOND-BEST DEAL:
 		<br />
-		<input type="radio" name="p2_runner_up" value="r1"> Option 1
+		<input type="radio" name="p2_runner_up" value="r1"> Option 1: <span class="print_r1"></span> + $<span class="print_comp_r1"></span>
 		<br />
-		<input type="radio" name="p2_runner_up" value="r2"> Option 2
+		<input type="radio" name="p2_runner_up" value="r2"> Option 2: <span class="print_r2"></span> + $<span class="print_comp_r2"></span>
 		<br />
 		<input type="radio" name="p2_runner_up" value="r3">
-		Option 3
+		Option 3: <span class="print_r3"></span> + $<span class="print_comp_r3"></span>
 	</p>
 	
 	<p> Thanks! So: how much compensation would you add to the second-best deal in order to make it as good as the best deal?</p>
