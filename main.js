@@ -13,9 +13,9 @@ var r3_name = "";
 // the main array for storing prices and room names. It gets updated after each player's move. It is an array of three arrays, each of which has the name of a room and then that room's current rent/price 
 
 var rooms_prices = [
-    [r1_name,""],
-    [r2_name,""],
-    [r3_name,""],
+    ["",""],
+    ["",""],
+    ["",""],
 ];
 
 // variables decided by player 1
@@ -48,11 +48,13 @@ $( ".print_r1" ).append( r1_name );
 $( ".print_r2" ).append( r2_name );
 $( ".print_r3" ).append( r3_name );
 
-rooms_prices = [
-    [r1_name,""],
-    [r2_name,""],
-    [r3_name,""],
-];
+rooms_prices[0][0] = r1_name;
+rooms_prices[1][0] = r2_name;
+rooms_prices[2][0] = r3_name;
+
+/* rooms_prices[0][1] = 250;
+rooms_prices[1][1] = 400;
+rooms_prices[2][1] = 350; */
 
 //END PLACEHOLDER. WHEN DONE, REACTIVATE NEXT FN
 
@@ -76,45 +78,79 @@ rooms_prices = [
     });
 }); */
 
-/* $(function() {
-    $( "#p1_submit" ).click(function(){
-    	rooms_prices[0][1] = $( "#p1r1_comp" ).val();
-    	rooms_prices[1][1] = $( "#p1r2_comp" ).val();
-    	rooms_prices[2][1] = $( "#p1r3_comp" ).val();
 
-    	$( ".print_comp_r1" ).append( rooms_prices[0][1] );
-        $( ".print_comp_r2" ).append( rooms_prices[1][1] );
-        $( ".print_comp_r3" ).append( rooms_prices[2][1] );
+$(function() {
+    $( "#p1_continue" ).click(function(){
+
+        var sortedIDs = $( "#sortable" ).sortable( "toArray", {attribute: "value"} );
+
+        p1_gold = sortedIDs[0];
+
+        var p1_gold_array = rooms_prices[p1_gold];
+        rooms_prices.splice(p1_gold, 1);
+        rooms_prices.unshift(p1_gold_array);
+
+        //note: haven't actually gotten silver/bronze working yet, but in a sense it doesn't matter
+
+        $( ".print_p1_gold_room" ).append( rooms_prices[0][0] );
+        $( ".print_p1_silver_room" ).append( rooms_prices[1][0] );
+        $( ".print_p1_bronze_room" ).append( rooms_prices[2][0] );
 
     });
 });
-*/
-$(function() {
-    $( "#p1_continue" ).click(function(){
-        var sortedIDs = $( "#sortable" ).sortable( "toArray", {attribute: "value"} );
-       
-        p1_runner_up = sortedIDs[1];
-        var p1_runner_up_array = rooms_prices[p1_runner_up];
-        rooms_prices.splice(p1_runner_up, 1);
-        rooms_prices.unshift(p1_runner_up_array);
 
-        p1_fav = sortedIDs[0];
-        var p1_fav_array = rooms_prices[p1_fav];
-        rooms_prices.splice(p1_fav, 1);
-        rooms_prices.unshift(p1_fav_array);
+// from jQueryUI: Slider https://jqueryui.com/slider/#steps
+
+$(function() {
+   
+   $( "#p1_silver_slider" ).slider({
+     value:100,
+     min: 0,
+     max: total_rent/3.0,
+     step: 1,
+      slide: function( event, ui ) {
+        $( "#p1_silver_amount" ).val( ui.value );
+      }
+    });
+
+    $( "#p1_silver_amount" ).val( $( "#p1_silver_slider" ).slider( "value" ) );
+});
+
+// could re-write this and previous functions as generalised functions of slider, amount
+
+$(function() {
+   
+   $( "#p1_bronze_slider" ).slider({
+     value:100,
+     min: 0,
+     max: total_rent/3.0,
+     step: 1,
+      slide: function( event, ui ) {
+        $( "#p1_bronze_amount" ).val( ui.value );
+      }
+    });
+
+    $( "#p1_bronze_amount" ).val( $( "#p1_bronze_slider" ).slider( "value" ) );
+});
+
+$(function() {
+    $( "#p1_submit" ).click(function(){
+
+        var p1_silver_comp = parseInt($( "#p1_silver_amount" ).val());
+        var p1_bronze_comp = parseInt($( "#p1_bronze_amount" ).val());
+
+        var tally_p1 = total_rent + p1_silver_comp + p1_bronze_comp;
+
+        var tally_p1_divided = tally_p1/3.0;
+
+        rooms_prices[0][1] = tally_p1_divided;
+        rooms_prices[1][1] = tally_p1_divided - p1_silver_comp;
+        rooms_prices[2][1] = tally_p1_divided - p1_bronze_comp;
 
         console.log(rooms_prices);
 
     });
 });
-
-rooms_prices[0][1] = 250;
-rooms_prices[1][1] = 400;
-rooms_prices[2][1] = 350;
-
-$( ".print_comp_r1" ).append( rooms_prices[0][1] );
-$( ".print_comp_r2" ).append( rooms_prices[1][1] );
-$( ".print_comp_r3" ).append( rooms_prices[2][1] );
 
 $(function() {
     $( "#p2_submit" ).click(function(){

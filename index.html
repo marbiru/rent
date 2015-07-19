@@ -59,7 +59,7 @@
 		<button id="p1_continue">Continue!</button>
 	</p>
 
-	<p> Thanks! Ok, for any given room except for your favourite, there should be some amount of extra cash that would make you equally happy taking the less-favourite room + the extra cash as with taking your favourite room with no extra cash.
+	<p> Thanks! For any given room except for your favourite, there should be some amount of extra cash that would make you equally happy between taking the less-favourite room + the extra cash and taking your favourite room with no extra cash.
 	<br />
 	<br />
 	So, for example, maybe you're indifferent between getting your favourite room and getting your second-favourite room + $100 cash each month.
@@ -68,16 +68,22 @@
 	For your two non-favourite rooms, how much cash would you need to make the overall bundles feel equally-good as getting your favourite room (with no extra cash)?
 	</p>
 
-	<p> 
-		<span class="print_r1"></span>:
-				<input type="range" id="p1r1_comp" min="0" max="300">
-				<br />
-			<span class="print_r2"></span>:
-				<input type="range" id="p1r2_comp" min="0" max="300">
-				<br />
-			<span class="print_r3"></span>:
-				<input type="range" id="p1r3_comp" min="0" max="300">
+	<p>
+	  Option 1: <span class="print_p1_silver_room"></span> + 
+	  <label for="p1_silver_amount"></label> 
+	  <input type="text" id="p1_silver_amount" readonly style="border:0; color:#f6931f; font-size: 22px; font-weight:bold; width: 60px;"> per month
+	  = <span class="print_p1_gold_room"></span>
 	</p>
+	 
+	<div id="p1_silver_slider"></div>
+
+	<p>
+	  Option 2: <span class="print_p1_bronze_room"></span> +  <label for="p1_bronze_amount"></label>
+	  <input type="text" id="p1_bronze_amount" readonly style="border:0; color:#f6931f; font-size: 22px; font-weight:bold; width: 60px;"> per month = <span class="print_p1_gold_room"></span>
+	</p>
+	 
+	<div id="p1_bronze_slider"></div>
+
 	<p>
 		<button id="p1_submit">Submit!</button>
 	</p>
