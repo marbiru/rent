@@ -20,6 +20,8 @@ var rooms_prices = [
 
 // variables decided by player 1
 var p1_comp = ["", "", ""];
+var p1_fav = "";
+var p1_runner_up = "";
 
 // vars decided by player 2
 var p2_fav = "";
@@ -87,6 +89,24 @@ rooms_prices = [
     });
 });
 */
+$(function() {
+    $( "#p1_continue" ).click(function(){
+        var sortedIDs = $( "#sortable" ).sortable( "toArray", {attribute: "value"} );
+       
+        p1_runner_up = sortedIDs[1];
+        var p1_runner_up_array = rooms_prices[p1_runner_up];
+        rooms_prices.splice(p1_runner_up, 1);
+        rooms_prices.unshift(p1_runner_up_array);
+
+        p1_fav = sortedIDs[0];
+        var p1_fav_array = rooms_prices[p1_fav];
+        rooms_prices.splice(p1_fav, 1);
+        rooms_prices.unshift(p1_fav_array);
+
+        console.log(rooms_prices);
+
+    });
+});
 
 rooms_prices[0][1] = 250;
 rooms_prices[1][1] = 400;
