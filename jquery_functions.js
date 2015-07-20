@@ -9,5 +9,3 @@ $(function() {
    $( "#sortable_p2" ).sortable();
    $( "#sortable_p2" ).disableSelection();
  });
-
-

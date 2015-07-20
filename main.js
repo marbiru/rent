@@ -20,14 +20,16 @@ var rooms_prices = [
 
 // variables decided by player 1
 var p1_comp = ["", "", ""];
-var p1_fav = "";
-var p1_runner_up = "";
+var p1_gold = "";
+var p1_silver = "";
 
 // vars decided by player 2
-var p2_fav = "";
-var p2_runner_up = "";
+var p2_gold = "";
+var p2_silver = "";
 var side_pot = "";
 
+// vars decided by player 3
+var p3_gold = "";
 
 // placeholder values!
 total_rent = 1000;
@@ -98,8 +100,6 @@ $(function() {
             p1_bronze_array
         ];
 
-        console.log(rooms_prices);
-
         $( ".print_p1_gold_room" ).append( rooms_prices[0][0] );
         $( ".print_p1_silver_room" ).append( rooms_prices[1][0] );
         $( ".print_p1_bronze_room" ).append( rooms_prices[2][0] );
@@ -112,8 +112,8 @@ $(function() {
 $(function() {
    
    $( "#p1_silver_slider" ).slider({
-     value:100,
-     min: 0,
+     value: 1,
+     min: 1,
      max: total_rent/3.0,
      step: 1,
       slide: function( event, ui ) {
@@ -125,13 +125,13 @@ $(function() {
 
 });
 
-// could re-write this and previous functions as generalised functions of slider, amount
+// should re-write this and previous functions as generalised functions of slider, amount
 
 $(function() {
    
    $( "#p1_bronze_slider" ).slider({
-     value:100,
-     min: 0,
+     value: 1,
+     min: 1,
      max: total_rent/3.0,
      step: 1,
       slide: function( event, ui ) {
@@ -162,6 +162,8 @@ $(function() {
     });
 });
 
+// is this an exact replica of p1_continue? Could those two functions be generalised, then?
+
 $(function() {
     $( "#p2_continue" ).click(function(){
 
@@ -181,11 +183,9 @@ $(function() {
             p2_bronze_array
         ];
 
-        console.log(rooms_prices);
-
-        $( ".print_p1_gold_room" ).append( rooms_prices[0][0] );
-        $( ".print_p1_silver_room" ).append( rooms_prices[1][0] );
-        $( ".print_p1_bronze_room" ).append( rooms_prices[2][0] );
+        $( ".print_p2_gold_room" ).append( rooms_prices[0][0] );
+        $( ".print_p2_silver_room" ).append( rooms_prices[1][0] );
+        $( ".print_p2_bronze_room" ).append( rooms_prices[2][0] );
 
     });
 });
@@ -193,8 +193,8 @@ $(function() {
 $(function() {
    
    $( "#p2_silver_slider" ).slider({
-     value:100,
-     min: 0,
+     value: 1,
+     min: 1,
      max: total_rent/3.0,
      step: 1,
       slide: function( event, ui ) {
@@ -209,37 +209,26 @@ $(function() {
 $(function() {
     $( "#p2_submit" ).click(function(){
         
-        p2_silver = $('input[name=p2_silver]:checked').val();
-        var p2_silver_array = rooms_prices[p2_silver];
-        rooms_prices.splice(p2_silver, 1);
-        rooms_prices.unshift(p2_runner_up_array);
-
-        p2_fav = $('input[name=p2_fav]:checked').val();
-        var p2_fav_array = rooms_prices[p2_fav];
-        rooms_prices.splice(p2_fav, 1);
-        rooms_prices.unshift(p2_fav_array);
-            	
-    	side_pot = parseInt($( "#side_pot" ).val());
-        rooms_prices[0][1] = rooms_prices[0][1] + side_pot;
-
-        $( ".print_fav_room" ).append( rooms_prices[0][0] );
-        $( ".print_mid_room" ).append( rooms_prices[1][0] );
-        $( ".print_worst_room" ).append( rooms_prices[2][0] );
-
-        $( ".print_comp_fav" ).append( rooms_prices[0][1] );
-        $( ".print_comp_mid" ).append( rooms_prices[1][1] );
-        $( ".print_comp_worst" ).append( rooms_prices[2][1] );
+        side_pot = parseInt($( "#p2_silver_amount" ).val());
+        
+        $( ".print_p2_gold_comp" ).append( rooms_prices[0][0] + " at $" + rooms_prices[0][1] + " per month" );
+        $( ".print_p2_silver_comp" ).append( rooms_prices[1][0] + " at $" + rooms_prices[1][1] + " per month" );
+        $( ".print_p2_bronze_comp" ).append( rooms_prices[2][0] + " at $" + rooms_prices[2][1] + " per month" );
     });
 });
 
 $(function() {
     $( "#p3_submit" ).click(function(){
-        p3_fav = $('input[name=p3_fav]:checked').val();
-        var p3_fav_array = rooms_prices[p3_fav];
-        rooms_prices.splice(p3_fav, 1);
-        rooms_prices.unshift(p3_fav_array);
+        //first array in the array are getting lost somehow
+        console.log(rooms_prices);
+        p3_gold = $('input[name=p3_fav]:checked').val();
+        var p3_gold_array = rooms_prices[p3_gold];
+        rooms_prices.splice(p3_gold, 1);
+        rooms_prices.unshift(p3_gold_array);
 
-        //redistributing the side pot
+        //redistributing the side pot -- this needs to go BEFORE splicing, after adjustment has been made in p2_submit to make sure p3 is voting on an appropriate deal by TRIMMING best deal offered p2 (not improving second-best deal)
+        console.log(rooms_prices);
+
         rooms_prices[0][1] = rooms_prices[0][1] - side_pot/3.0;
         rooms_prices[1][1] = rooms_prices[1][1] - side_pot/3.0;
         rooms_prices[2][1] = rooms_prices[2][1] - side_pot/3.0;
