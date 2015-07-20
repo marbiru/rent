@@ -31,7 +31,7 @@ var side_pot = "";
 // vars decided by player 3
 var p3_gold = "";
 
-// placeholder values!
+// PLACEHOLDER values!
 total_rent = 1000;
 
 p1_name = "Lady 1";
@@ -54,10 +54,6 @@ rooms_prices[0][0] = r1_name;
 rooms_prices[1][0] = r2_name;
 rooms_prices[2][0] = r3_name;
 
-/* rooms_prices[0][1] = 250;
-rooms_prices[1][1] = 400;
-rooms_prices[2][1] = 350; */
-
 //END PLACEHOLDER. WHEN DONE, REACTIVATE NEXT FN
 
 /* $(function() {
@@ -79,7 +75,6 @@ rooms_prices[2][1] = 350; */
         $( ".print_r3" ).append( r3_name );
     });
 }); */
-
 
 $(function() {
     $( "#p1_continue" ).click(function(){
@@ -104,6 +99,8 @@ $(function() {
         $( ".print_p1_silver_room" ).append( rooms_prices[1][0] );
         $( ".print_p1_bronze_room" ).append( rooms_prices[2][0] );
 
+});
+
     });
 });
 
@@ -125,7 +122,7 @@ $(function() {
 
 });
 
-// should re-write this and previous functions as generalised functions of slider, amount
+// should re-write this and previous slider function as generalised functions of slider, amount
 
 $(function() {
    
@@ -159,6 +156,7 @@ $(function() {
         $( ".print_p1_gold_comp" ).append( rooms_prices[0][0] + " + $0" );
         $( ".print_p1_silver_comp" ).append( rooms_prices[1][0] + " + $" + p1_silver_comp );
         $( ".print_p1_bronze_comp" ).append( rooms_prices[2][0] + " + $" + p1_bronze_comp );
+
     });
 });
 
@@ -166,7 +164,7 @@ $(function() {
 
 $(function() {
     $( "#p2_continue" ).click(function(){
-
+        
         var sortedIDs_p2 = $( "#sortable_p2" ).sortable( "toArray", {attribute: "value"} );
 
         p2_gold = Number(sortedIDs_p2[0]);
@@ -191,10 +189,11 @@ $(function() {
 });
 
 $(function() {
-   
+   var p2_silver_starting_comp = Number(rooms_prices[1][1]);
+   console.log(p2_silver_starting_comp);
    $( "#p2_silver_slider" ).slider({
-     value: 1,
-     min: 1,
+     value: p2_silver_starting_comp,
+     min: p2_silver_starting_comp,
      max: total_rent/3.0,
      step: 1,
       slide: function( event, ui ) {
@@ -208,9 +207,19 @@ $(function() {
 
 $(function() {
     $( "#p2_submit" ).click(function(){
-        
-        side_pot = parseInt($( "#p2_silver_amount" ).val());
-        
+
+        console.log(rooms_prices);
+
+        var p2_silver_comp = parseInt($( "#p2_silver_amount" ).val());
+
+        console.log(p2_silver_comp);
+
+        side_pot = p2_silver_comp - Number(rooms_prices[1][1]);
+
+        console.log(side_pot);
+
+        console.log(rooms_prices);
+
         $( ".print_p2_gold_comp" ).append( rooms_prices[0][0] + " at $" + rooms_prices[0][1] + " per month" );
         $( ".print_p2_silver_comp" ).append( rooms_prices[1][0] + " at $" + rooms_prices[1][1] + " per month" );
         $( ".print_p2_bronze_comp" ).append( rooms_prices[2][0] + " at $" + rooms_prices[2][1] + " per month" );
@@ -220,18 +229,15 @@ $(function() {
 $(function() {
     $( "#p3_submit" ).click(function(){
         //first array in the array are getting lost somehow
-        console.log(rooms_prices);
-        p3_gold = $('input[name=p3_fav]:checked').val();
+
+        p3_gold = $('input[name=p3_gold]:checked').val();
         var p3_gold_array = rooms_prices[p3_gold];
         rooms_prices.splice(p3_gold, 1);
         rooms_prices.unshift(p3_gold_array);
 
         //redistributing the side pot -- this needs to go BEFORE splicing, after adjustment has been made in p2_submit to make sure p3 is voting on an appropriate deal by TRIMMING best deal offered p2 (not improving second-best deal)
-        console.log(rooms_prices);
 
-        rooms_prices[0][1] = rooms_prices[0][1] - side_pot/3.0;
-        rooms_prices[1][1] = rooms_prices[1][1] - side_pot/3.0;
-        rooms_prices[2][1] = rooms_prices[2][1] - side_pot/3.0;
+        console.log(rooms_prices);
 
 
         $( ".print_p3_room" ).append( rooms_prices[0][0] );

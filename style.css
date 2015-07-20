@@ -19,11 +19,12 @@ p, form, button, li {
 	text-align: center;
 }
 
+
  #sortable, #sortable_p2 { 
  	list-style-type: none; 
  	margin: 0; 
  	padding: 0; 
- 	width: 60%; 
+ 	width: 40%; 
  }
 
  #sortable li, #sortable_p2 li { 

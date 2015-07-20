@@ -48,13 +48,12 @@
 
 	<p>Great, let's get started! <span class="print_p1"></span>, you're up first. First, please rank the rooms from your favourite to your least-favourite (if there were no other considerations, and if they all cost the same price):</p>
 
-	<p>
 		<ul id="sortable">
 		  <li class="ui-state-default" value="0"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span><span class="print_r1"></span></li>
 		  <li class="ui-state-default" value="1"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span><span class="print_r2"></span></li>
 		  <li class="ui-state-default" value="2"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span><span class="print_r3"></span></li>
 		</ul>
-	</p>
+		
 	<p>
 		<button id="p1_continue">Continue!</button>
 	</p>
@@ -68,18 +67,21 @@
 	For your two non-favourite rooms, how much cash would you need to make the overall bundles feel equally-good as getting your favourite room (with no extra cash)?
 	</p>
 
-	<p>
-	  <span class="print_p1_silver_room"></span> + 
+	<p>SECOND-FAVOURITE ROOM
+		<br />
+	  <span class="print_p1_silver_room"></span> + $
 	  <label for="p1_silver_amount"></label> 
 	  <input type="text" id="p1_silver_amount" readonly style="border:0; color:#f6931f; font-size: 22px; font-weight:bold; width: 60px;"> per month
-	  = <span class="print_p1_gold_room"></span>
+	  = <span class="print_p1_gold_room"></span> + $0 per month.
 	</p>
 	 
 	<div id="p1_silver_slider"></div>
 
-	<p>
-	  <span class="print_p1_bronze_room"></span> +  <label for="p1_bronze_amount"></label>
-	  <input type="text" id="p1_bronze_amount" readonly style="border:0; color:#f6931f; font-size: 22px; font-weight:bold; width: 60px;"> per month = <span class="print_p1_gold_room"></span>
+	<p>THIRD-FAVOURITE ROOM 
+		<br />(Compensation should be higher than for second-favourite)
+		<br />
+	  <span class="print_p1_bronze_room"></span> + $<label for="p1_bronze_amount"></label>
+	  <input type="text" id="p1_bronze_amount" readonly style="border:0; color:#f6931f; font-size: 22px; font-weight:bold; width: 60px;"> per month = <span class="print_p1_gold_room"></span> + $0 per month.
 	</p>
 	 
 	<div id="p1_bronze_slider"></div>
@@ -145,7 +147,7 @@
 
 	<p> Ok, thanks <span class="print_p2"></span>! Now, <span class="print_p3"></span>, you're up next.</p>
 
-	<p><span class="print_p3"></span>, you currently have three "offers" of rooms + compensation. Please pick the best deal for you:</p>
+	<p><span class="print_p3"></span>, you currently have three "offers" of rooms at different rents. If these were your options for rooms/rents, which of these would you say is the best deal?</p>
 
 	<p>
 		
@@ -177,15 +179,15 @@
 	<p> Thanks everyone! Here's your results:</p>
 
 	<p>
-		<span class="print_p3"></span> should get <span class="print_p3_room"></span> and pay <span class="print_p3_price"></span>.
+		<span class="print_p3"></span> should get <span class="print_p3_room"></span> and pay $<span class="print_p3_price"></span>.
 	</p>
 
 	<p>
-		<span class="print_p2"></span> should get <span class="print_p2_room"></span> and pay <span class="print_p2_price"></span>.
+		<span class="print_p2"></span> should get <span class="print_p2_room"></span> and pay $<span class="print_p2_price"></span>.
 	</p>
 
 	<p>
-		<span class="print_p1"></span> should get <span class="print_p1_room"></span> and pay <span class="print_p1_price"></span>.
+		<span class="print_p1"></span> should get <span class="print_p1_room"></span> and pay $<span class="print_p1_price"></span>.
 	</p>
 
 	<p> Thanks for using the Rent Calculator!</p>
