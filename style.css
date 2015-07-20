@@ -27,7 +27,7 @@ p, form, button, li {
  	list-style-type: none; 
  	margin: 0; 
  	padding: 0; 
- 	width: 40%; 
+ 	width: 100%; 
  }
 
  #sortable li, #sortable_p2 li { 

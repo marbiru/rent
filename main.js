@@ -10,9 +10,8 @@ var r1_name = "";
 var r2_name = "";
 var r3_name = "";
 
-// the main array for storing prices and room names. It gets updated after each player's move. It is an array of three arrays, each of which has the name of a room, the room's current rent/price
+// the main array for storing prices and room names. It gets updated after each player's move. It is an array of three arrays, each of which has the name of a room, the room's current rent/price, and the most recent "compensation" for that room.
 
-//almost certainly need "running count" of comp added on the end of each of the arrays here
 var rooms_prices = [
     ["", "", ""],
     ["", "", ""],
@@ -162,9 +161,9 @@ $(function() {
         rooms_prices[1][1] = tally_p1_divided - p1_silver_comp;
         rooms_prices[2][1] = tally_p1_divided - p1_bronze_comp;
 
-        $( ".print_p1_gold_comp" ).append( rooms_prices[0][0] + " + $" + rooms_prices[0][2] );
-        $( ".print_p1_silver_comp" ).append( rooms_prices[1][0] + " + $" + rooms_prices[1][2] );
-        $( ".print_p1_bronze_comp" ).append( rooms_prices[2][0] + " + $" + rooms_prices[2][2] );
+        $( ".print_p1_gold_comp" ).append( rooms_prices[0][0] + " + $" + rooms_prices[0][2] + " per month" );
+        $( ".print_p1_silver_comp" ).append( rooms_prices[1][0] + " + $" + rooms_prices[1][2] + " per month" );
+        $( ".print_p1_bronze_comp" ).append( rooms_prices[2][0] + " + $" + rooms_prices[2][2] + " per month" );
 
         $( "#p2_choices_1" ).show( "slow" );
         $( "#p1_choices_2" ).hide( "slow" );
@@ -227,20 +226,20 @@ $(function() {
 $(function() {
     $( "#p2_submit" ).click(function(){
 
-        console.log(rooms_prices);
-
         var p2_silver_comp = parseInt($( "#p2_silver_amount" ).val());
 
-        console.log(p2_silver_comp);
+        side_pot = p2_silver_comp - parseInt(rooms_prices[1][2]);
 
-        side_pot = p2_silver_comp - Number(rooms_prices[1][1]);
+        rooms_prices[0][2] = rooms_prices[0][2] - side_pot;
 
-        // 1. add sidepot to p2_gold rent
-        // 2. later, subtract sidepot/3 from all rents
+        rooms_prices[0][1] = rooms_prices[0][1] + (2*side_pot)/3.0;
+        rooms_prices[1][1] = rooms_prices[1][1] - side_pot/3.0;
+        rooms_prices[2][1] = rooms_prices[2][1] - side_pot/3.0;
 
-        $( ".print_p2_gold_comp" ).append( rooms_prices[0][0] + " at $" + rooms_prices[0][1].toFixed(2) + " per month" );
-        $( ".print_p2_silver_comp" ).append( rooms_prices[1][0] + " at $" + rooms_prices[1][1].toFixed(2) + " per month" );
-        $( ".print_p2_bronze_comp" ).append( rooms_prices[2][0] + " at $" + rooms_prices[2][1].toFixed(2) + " per month" );
+
+        $( ".print_p2_gold_comp" ).append( rooms_prices[0][0] + " + $" + rooms_prices[0][2] + " per month" );
+        $( ".print_p2_silver_comp" ).append( rooms_prices[1][0] + " + $" + rooms_prices[1][2] + " per month" );
+        $( ".print_p2_bronze_comp" ).append( rooms_prices[2][0] + " + $" + rooms_prices[2][2] + " per month" );
 
         $( "#p3_choices" ).show( "slow" );
         $( "#p2_choices_2" ).hide( "slow" );
