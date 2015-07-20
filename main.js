@@ -32,7 +32,7 @@ var side_pot = "";
 var p3_gold = "";
 
 // PLACEHOLDER values!
-total_rent = 1000;
+/*total_rent = 1000;
 
 p1_name = "Lady 1";
 p2_name = "Mr 2";
@@ -52,11 +52,11 @@ $( ".print_r3" ).append( r3_name );
 
 rooms_prices[0][0] = r1_name;
 rooms_prices[1][0] = r2_name;
-rooms_prices[2][0] = r3_name;
+rooms_prices[2][0] = r3_name; */
 
 //END PLACEHOLDER. WHEN DONE, REACTIVATE NEXT FN
 
-/* $(function() {
+$(function() {
     $( "#player_room_submit" ).click(function(){
     	p1_name = $( "#p1_name" ).val();
         p2_name = $( "#p2_name" ).val();
@@ -73,8 +73,11 @@ rooms_prices[2][0] = r3_name;
         $( ".print_r1" ).append( r1_name );
         $( ".print_r2" ).append( r2_name );
         $( ".print_r3" ).append( r3_name );
+
+        $( "#p1_choices" ).show( "slow" );
+        $( "#general_info" ).hide( "slow" );
     });
-}); */
+});
 
 $(function() {
     $( "#p1_continue" ).click(function(){
@@ -98,9 +101,6 @@ $(function() {
         $( ".print_p1_gold_room" ).append( rooms_prices[0][0] );
         $( ".print_p1_silver_room" ).append( rooms_prices[1][0] );
         $( ".print_p1_bronze_room" ).append( rooms_prices[2][0] );
-
-});
-
     });
 });
 
@@ -156,6 +156,9 @@ $(function() {
         $( ".print_p1_gold_comp" ).append( rooms_prices[0][0] + " + $0" );
         $( ".print_p1_silver_comp" ).append( rooms_prices[1][0] + " + $" + p1_silver_comp );
         $( ".print_p1_bronze_comp" ).append( rooms_prices[2][0] + " + $" + p1_bronze_comp );
+
+        $( "#p2_choices" ).show( "slow" );
+        $( "#p1_choices" ).hide( "slow" );
 
     });
 });
@@ -223,6 +226,10 @@ $(function() {
         $( ".print_p2_gold_comp" ).append( rooms_prices[0][0] + " at $" + rooms_prices[0][1] + " per month" );
         $( ".print_p2_silver_comp" ).append( rooms_prices[1][0] + " at $" + rooms_prices[1][1] + " per month" );
         $( ".print_p2_bronze_comp" ).append( rooms_prices[2][0] + " at $" + rooms_prices[2][1] + " per month" );
+
+        $( "#p3_choices" ).show( "slow" );
+        $( "#p2_choices" ).hide( "slow" );
+
     });
 });
 
@@ -247,6 +254,9 @@ $(function() {
         $( ".print_p3_price" ).append( rooms_prices[0][1] );
         $( ".print_p2_price" ).append( rooms_prices[1][1] );
         $( ".print_p1_price" ).append( rooms_prices[2][1] );
+
+        $( "#results" ).show( "slow" );
+        $( "#p3_choices" ).hide( "slow" );
 
     });
 });
