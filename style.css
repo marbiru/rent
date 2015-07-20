@@ -19,14 +19,14 @@ p, form, button, li {
 	text-align: center;
 }
 
- #sortable { 
+ #sortable, #sortable_p2 { 
  	list-style-type: none; 
  	margin: 0; 
  	padding: 0; 
  	width: 60%; 
  }
 
- #sortable li { 
+ #sortable li, #sortable_p2 li { 
  	margin: 0 3px 3px 3px; 
  	padding: 0.4em; 
  	padding-left: 1.5em; 
@@ -34,7 +34,7 @@ p, form, button, li {
  	height: 18px; 
  }
  
- #sortable li span { 
+ #sortable li span, #sortable_p2 li span { 
  	position: absolute; 
  	margin-left: -1.3em; 
  }

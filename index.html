@@ -94,38 +94,47 @@
 
 	<p> Ok, thanks <span class="print_p1"></span>! Now, <span class="print_p2"></span>, you're up next.</p>
 
-	<p><span class="print_p2"></span>, you currently have three "offers" of rooms + compensation. Please pick the best deal for you and the second-best deal:</p>
-
-	<p>
-		BEST DEAL:
-		<br />
-		<input type="radio" name="p2_fav" value="0"> Option 1: <span class="print_r1"></span> + $<span class="print_comp_r1"></span>
-		<br />
-		<input type="radio" name="p2_fav" value="1"> Option 2: <span class="print_r2"></span> + $<span class="print_comp_r2"></span>
-		<br />
-		<input type="radio" name="p2_fav" value="2">
-		Option 3: <span class="print_r3"></span> + $<span class="print_comp_r3"></span>
-	</p>
-
-	<p>
-		SECOND-BEST DEAL:
-		<br />
-		<input type="radio" name="p2_runner_up" value="0"> Option 1: <span class="print_r1"></span> + $<span class="print_comp_r1"></span>
-		<br />
-		<input type="radio" name="p2_runner_up" value="1"> Option 2: <span class="print_r2"></span> + $<span class="print_comp_r2"></span>
-		<br />
-		<input type="radio" name="p2_runner_up" value="2">
-		Option 3: <span class="print_r3"></span> + $<span class="print_comp_r3"></span>
-	</p>
+	<p><span class="print_p2"></span>, you currently have three "offers" of rooms + cash. Please rank these deals, from your favourite to your least-favourite:</p>
 	
+	<p>
+		<ul id="sortable_p2">
+		  
+		  <li class="ui-state-default" value="0">
+		  	<span class="ui-icon ui-icon-arrowthick-2-n-s"></span>
+		  	<span class="print_p1_gold_comp"></span>
+		  </li>
+		  
+		  <li class="ui-state-default" value="1">
+		  	<span class="ui-icon ui-icon-arrowthick-2-n-s"></span>
+		  	<span class="print_p1_silver_comp"></span>
+		  </li>
+		  
+		 <li class="ui-state-default" value="2">
+		 	<span class="ui-icon ui-icon-arrowthick-2-n-s"></span>
+		 	<span class="print_p1_bronze_comp"></span>
+		 </li>
+
+		</ul>
+	</p>
+	<p>
+		<button id="p2_continue">Continue!</button>
+	</p>
+
 	<p> Thanks! So: how much compensation would you add to the second-best deal in order to make it as good as the best deal?</p>
 
 	<p>
-		<input type="range" id="side_pot" min="0" max="300">
+	  Option 1: <span class="print_p2_silver_room"></span> + 
+	  <label for="p2_silver_amount"></label> 
+	  <input type="text" id="p2_silver_amount" readonly style="border:0; color:#f6931f; font-size: 22px; font-weight:bold; width: 60px;"> per month
+	  = <span class="print_p1_gold_room"></span>
 	</p>
+	 
+	<div id="p2_silver_slider"></div>
+
 	<p>
 		<button id="p2_submit">Submit!</button>
 	</p>
+	
 </div>
 
 <div id="p3_choices" class="new_section">

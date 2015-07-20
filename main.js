@@ -84,13 +84,21 @@ $(function() {
 
         var sortedIDs = $( "#sortable" ).sortable( "toArray", {attribute: "value"} );
 
-        p1_gold = sortedIDs[0];
-
+        p1_gold = Number(sortedIDs[0]);
+        p1_silver = Number(sortedIDs[1]);
+        p1_bronze = Number(sortedIDs[2]);
+        
         var p1_gold_array = rooms_prices[p1_gold];
-        rooms_prices.splice(p1_gold, 1);
-        rooms_prices.unshift(p1_gold_array);
+        var p1_silver_array = rooms_prices[p1_silver];
+        var p1_bronze_array = rooms_prices[p1_bronze];
 
-        //note: haven't actually gotten silver/bronze working yet, but in a sense it doesn't matter
+        rooms_prices = [
+            p1_gold_array, 
+            p1_silver_array, 
+            p1_bronze_array
+        ];
+
+        console.log(rooms_prices);
 
         $( ".print_p1_gold_room" ).append( rooms_prices[0][0] );
         $( ".print_p1_silver_room" ).append( rooms_prices[1][0] );
@@ -114,6 +122,7 @@ $(function() {
     });
 
     $( "#p1_silver_amount" ).val( $( "#p1_silver_slider" ).slider( "value" ) );
+
 });
 
 // could re-write this and previous functions as generalised functions of slider, amount
@@ -147,17 +156,62 @@ $(function() {
         rooms_prices[1][1] = tally_p1_divided - p1_silver_comp;
         rooms_prices[2][1] = tally_p1_divided - p1_bronze_comp;
 
+        $( ".print_p1_gold_comp" ).append( rooms_prices[0][0] + " + $0" );
+        $( ".print_p1_silver_comp" ).append( rooms_prices[1][0] + " + $" + p1_silver_comp );
+        $( ".print_p1_bronze_comp" ).append( rooms_prices[2][0] + " + $" + p1_bronze_comp );
+    });
+});
+
+$(function() {
+    $( "#p2_continue" ).click(function(){
+
+        var sortedIDs_p2 = $( "#sortable_p2" ).sortable( "toArray", {attribute: "value"} );
+
+        p2_gold = Number(sortedIDs_p2[0]);
+        p2_silver = Number(sortedIDs_p2[1]);
+        p2_bronze = Number(sortedIDs_p2[2]);
+        
+        var p2_gold_array = rooms_prices[p2_gold];
+        var p2_silver_array = rooms_prices[p2_silver];
+        var p2_bronze_array = rooms_prices[p2_bronze];
+
+        rooms_prices = [
+            p2_gold_array, 
+            p2_silver_array, 
+            p2_bronze_array
+        ];
+
         console.log(rooms_prices);
+
+        $( ".print_p1_gold_room" ).append( rooms_prices[0][0] );
+        $( ".print_p1_silver_room" ).append( rooms_prices[1][0] );
+        $( ".print_p1_bronze_room" ).append( rooms_prices[2][0] );
 
     });
 });
 
 $(function() {
+   
+   $( "#p2_silver_slider" ).slider({
+     value:100,
+     min: 0,
+     max: total_rent/3.0,
+     step: 1,
+      slide: function( event, ui ) {
+        $( "#p2_silver_amount" ).val( ui.value );
+      }
+    });
+
+    $( "#p2_silver_amount" ).val( $( "#p2_silver_slider" ).slider( "value" ) );
+    
+});
+
+$(function() {
     $( "#p2_submit" ).click(function(){
         
-        p2_runner_up = $('input[name=p2_runner_up]:checked').val();
-        var p2_runner_up_array = rooms_prices[p2_runner_up];
-        rooms_prices.splice(p2_runner_up, 1);
+        p2_silver = $('input[name=p2_silver]:checked').val();
+        var p2_silver_array = rooms_prices[p2_silver];
+        rooms_prices.splice(p2_silver, 1);
         rooms_prices.unshift(p2_runner_up_array);
 
         p2_fav = $('input[name=p2_fav]:checked').val();
