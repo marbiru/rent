@@ -14,15 +14,15 @@ var r3_name = "";
 
 //almost certainly need "running count" of comp added on the end of each of the arrays here
 var rooms_prices = [
-    ["",""],
-    ["",""],
-    ["",""],
+    ["", "", ""],
+    ["", "", ""],
+    ["", "", ""],
 ];
 
 // variables decided by player 1
-var p1_comp = ["", "", ""];
 var p1_gold = "";
 var p1_silver = "";
+var p1_bronze = "";
 
 // vars decided by player 2
 var p2_gold = "";
@@ -150,7 +150,9 @@ $(function() {
         var p1_silver_comp = parseInt($( "#p1_silver_amount" ).val());
         var p1_bronze_comp = parseInt($( "#p1_bronze_amount" ).val());
 
-        p1_comp = [0, p1_silver_comp, p1_bronze_comp];
+        rooms_prices[0][2] = 0;
+        rooms_prices[1][2] = p1_silver_comp; 
+        rooms_prices[2][2] = p1_bronze_comp;
 
         var tally_p1 = total_rent + p1_silver_comp + p1_bronze_comp;
 
@@ -160,9 +162,9 @@ $(function() {
         rooms_prices[1][1] = tally_p1_divided - p1_silver_comp;
         rooms_prices[2][1] = tally_p1_divided - p1_bronze_comp;
 
-        $( ".print_p1_gold_comp" ).append( rooms_prices[0][0] + " + $0" );
-        $( ".print_p1_silver_comp" ).append( rooms_prices[1][0] + " + $" + p1_silver_comp );
-        $( ".print_p1_bronze_comp" ).append( rooms_prices[2][0] + " + $" + p1_bronze_comp );
+        $( ".print_p1_gold_comp" ).append( rooms_prices[0][0] + " + $" + rooms_prices[0][2] );
+        $( ".print_p1_silver_comp" ).append( rooms_prices[1][0] + " + $" + rooms_prices[1][2] );
+        $( ".print_p1_bronze_comp" ).append( rooms_prices[2][0] + " + $" + rooms_prices[2][2] );
 
         $( "#p2_choices_1" ).show( "slow" );
         $( "#p1_choices_2" ).hide( "slow" );
@@ -192,7 +194,7 @@ $(function() {
         ];
 
         $( ".print_p2_gold_room" ).append( rooms_prices[0][0] );
-        $( ".print_p2_gold_comp" ).append( p1_comp[p2_gold] );
+        $( ".print_p2_gold_comp" ).append( rooms_prices[0][2] );
 
         $( ".print_p2_silver_room" ).append( rooms_prices[1][0] );
         $( ".print_p2_bronze_room" ).append( rooms_prices[2][0] );
@@ -204,19 +206,22 @@ $(function() {
 });
 
 $(function() {
-   var p2_silver_starting_comp = Number(rooms_prices[1][1]);
-   $( "#p2_silver_slider" ).slider({
-     value: p2_silver_starting_comp,
-     min: p2_silver_starting_comp,
-     max: total_rent/3.0,
-     step: 1,
-      slide: function( event, ui ) {
-        $( "#p2_silver_amount" ).val( ui.value );
-      }
-    });
+        // function used to run too early, hence the problem with the array not being set yet and the result being null
+    $( "#p2_continue" ).click(function(){
 
-    $( "#p2_silver_amount" ).val( $( "#p2_silver_slider" ).slider( "value" ) );
-    
+        var p2_silver_init = rooms_prices[1][2];
+       $( "#p2_silver_slider" ).slider({
+         value: p2_silver_init,
+         min: p2_silver_init,
+         max: total_rent/3.0,
+         step: 1,
+          slide: function( event, ui ) {
+            $( "#p2_silver_amount" ).val( ui.value );
+          }
+        });
+
+        $( "#p2_silver_amount" ).val( $( "#p2_silver_slider" ).slider( "value" ) );
+    })
 });
 
 $(function() {
@@ -233,13 +238,9 @@ $(function() {
         // 1. add sidepot to p2_gold rent
         // 2. later, subtract sidepot/3 from all rents
 
-        console.log(side_pot);
-
-        console.log(rooms_prices);
-
-        $( ".print_p2_gold_comp" ).append( rooms_prices[0][0] + " at $" + rooms_prices[0][1] + " per month" );
-        $( ".print_p2_silver_comp" ).append( rooms_prices[1][0] + " at $" + rooms_prices[1][1] + " per month" );
-        $( ".print_p2_bronze_comp" ).append( rooms_prices[2][0] + " at $" + rooms_prices[2][1] + " per month" );
+        $( ".print_p2_gold_comp" ).append( rooms_prices[0][0] + " at $" + rooms_prices[0][1].toFixed(2) + " per month" );
+        $( ".print_p2_silver_comp" ).append( rooms_prices[1][0] + " at $" + rooms_prices[1][1].toFixed(2) + " per month" );
+        $( ".print_p2_bronze_comp" ).append( rooms_prices[2][0] + " at $" + rooms_prices[2][1].toFixed(2) + " per month" );
 
         $( "#p3_choices" ).show( "slow" );
         $( "#p2_choices_2" ).hide( "slow" );
