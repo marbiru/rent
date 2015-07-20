@@ -23,7 +23,6 @@ var rooms_prices = [
 var p1_comp = ["", "", ""];
 var p1_gold = "";
 var p1_silver = "";
-var p1_silver_comp = "";
 
 // vars decided by player 2
 var p2_gold = "";
@@ -114,7 +113,7 @@ $(function() {
 $(function() {
    
    $( "#p1_silver_slider" ).slider({
-     value: 1,
+     value: 25, // tk temp while testing
      min: 1,
      max: total_rent/3.0,
      step: 1,
@@ -127,24 +126,13 @@ $(function() {
 
 });
 
-$(function() {
-    $( "#p1_continue_2" ).click(function(){
-
-        p1_silver_comp = parseInt($( "#p1_silver_amount" ).val());
-        console.log(p1_silver_comp);
-
-        $( "#p2_choices_3" ).show( "slow" );
-        $( "#p1_choices_2" ).hide( "slow" );
-
-    });
-});
 
 // should re-write this and previous slider function as generalised functions of slider, amount
 
 $(function() {
 
    $( "#p1_bronze_slider" ).slider({
-     value: 1,
+     value: 74, // tk temp while testing
      min: 1,
      max: total_rent/3.0,
      step: 1,
@@ -159,6 +147,7 @@ $(function() {
 $(function() {
     $( "#p1_submit" ).click(function(){
 
+        var p1_silver_comp = parseInt($( "#p1_silver_amount" ).val());
         var p1_bronze_comp = parseInt($( "#p1_bronze_amount" ).val());
 
         p1_comp = [0, p1_silver_comp, p1_bronze_comp];
@@ -176,7 +165,7 @@ $(function() {
         $( ".print_p1_bronze_comp" ).append( rooms_prices[2][0] + " + $" + p1_bronze_comp );
 
         $( "#p2_choices_1" ).show( "slow" );
-        $( "#p1_choices_3" ).hide( "slow" );
+        $( "#p1_choices_2" ).hide( "slow" );
 
     });
 });
@@ -203,6 +192,8 @@ $(function() {
         ];
 
         $( ".print_p2_gold_room" ).append( rooms_prices[0][0] );
+        $( ".print_p2_gold_comp" ).append( p1_comp[p2_gold] );
+
         $( ".print_p2_silver_room" ).append( rooms_prices[1][0] );
         $( ".print_p2_bronze_room" ).append( rooms_prices[2][0] );
 
