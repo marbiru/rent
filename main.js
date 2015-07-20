@@ -31,35 +31,6 @@ var side_pot = "";
 // vars decided by player 3
 var p3_gold = "";
 
-/*
-// PLACEHOLDER values!
-        
-        total_rent = 1000;
-
-        p1_name = "Lady 1";
-        p2_name = "Mr 2";
-        p3_name = "Player 3";
-
-        r1_name = "The First Room";
-        r2_name = "Second Room";
-        r3_name = "The Third Room";
-
-        $( ".print_p1" ).append( p1_name );
-        $( ".print_p2" ).append( p2_name );
-        $( ".print_p3" ).append( p3_name );
-
-        $( ".print_r1" ).append( r1_name );
-        $( ".print_r2" ).append( r2_name );
-        $( ".print_r3" ).append( r3_name );
-
-        rooms_prices[0][0] = r1_name;
-        rooms_prices[1][0] = r2_name;
-        rooms_prices[2][0] = r3_name;
-
-//END PLACEHOLDER. WHEN DONE, REACTIVATE NEXT FN
-*/
-
-
 $(function() {
     $( "#player_room_submit" ).click(function(){
 
@@ -77,13 +48,13 @@ $(function() {
 
         total_rent = $( "#total_rent" ).val();
 
-        $( ".print_p1" ).append( p1_name );
-        $( ".print_p2" ).append( p2_name );
-        $( ".print_p3" ).append( p3_name );
+        $( ".print_p1" ).text( p1_name );
+        $( ".print_p2" ).text( p2_name );
+        $( ".print_p3" ).text( p3_name );
 
-        $( ".print_r1" ).append( r1_name );
-        $( ".print_r2" ).append( r2_name );
-        $( ".print_r3" ).append( r3_name );
+        $( ".print_r1" ).text( r1_name );
+        $( ".print_r2" ).text( r2_name );
+        $( ".print_r3" ).text( r3_name );
 
         $( "#p1_choices_1" ).show( "slow" );
         $( "#general_info" ).hide( "slow" );
@@ -109,9 +80,9 @@ $(function() {
             p1_bronze_array
         ];
 
-        $( ".print_p1_gold_room" ).append( rooms_prices[0][0] );
-        $( ".print_p1_silver_room" ).append( rooms_prices[1][0] );
-        $( ".print_p1_bronze_room" ).append( rooms_prices[2][0] );
+        $( ".print_p1_gold_room" ).text( rooms_prices[0][0] );
+        $( ".print_p1_silver_room" ).text( rooms_prices[1][0] );
+        $( ".print_p1_bronze_room" ).text( rooms_prices[2][0] );
 
         $( "#p1_choices_2" ).show( "slow" );
         $( "#p1_choices_1" ).hide( "slow" );
@@ -173,9 +144,9 @@ $(function() {
         rooms_prices[1][1] = tally_p1_divided - p1_silver_comp;
         rooms_prices[2][1] = tally_p1_divided - p1_bronze_comp;
 
-        $( ".print_p1_gold_comp" ).append( rooms_prices[0][0] + " + $" + rooms_prices[0][2] + " per month" );
-        $( ".print_p1_silver_comp" ).append( rooms_prices[1][0] + " + $" + rooms_prices[1][2] + " per month" );
-        $( ".print_p1_bronze_comp" ).append( rooms_prices[2][0] + " + $" + rooms_prices[2][2] + " per month" );
+        $( ".print_p1_gold_comp" ).text( rooms_prices[0][0] + " + $" + rooms_prices[0][2] + " per month" );
+        $( ".print_p1_silver_comp" ).text( rooms_prices[1][0] + " + $" + rooms_prices[1][2] + " per month" );
+        $( ".print_p1_bronze_comp" ).text( rooms_prices[2][0] + " + $" + rooms_prices[2][2] + " per month" );
 
         $( "#p2_choices_1" ).show( "slow" );
         $( "#p1_choices_2" ).hide( "slow" );
@@ -204,11 +175,11 @@ $(function() {
             p2_bronze_array
         ];
 
-        $( ".print_p2_gold_room" ).append( rooms_prices[0][0] );
-        $( ".print_p2_gold_comp" ).append( rooms_prices[0][2] );
+        $( ".print_p2_gold_room" ).text( rooms_prices[0][0] );
+        $( ".print_p2_gold_comp" ).text( rooms_prices[0][2] );
 
-        $( ".print_p2_silver_room" ).append( rooms_prices[1][0] );
-        $( ".print_p2_bronze_room" ).append( rooms_prices[2][0] );
+        $( ".print_p2_silver_room" ).text( rooms_prices[1][0] );
+        $( ".print_p2_bronze_room" ).text( rooms_prices[2][0] );
 
         $( "#p2_choices_2" ).show( "slow" );
         $( "#p2_choices_1" ).hide( "slow" );
@@ -249,9 +220,9 @@ $(function() {
         rooms_prices[2][1] = rooms_prices[2][1] - side_pot/3.0;
 
 
-        $( ".print_p2_gold_with_comp" ).append( rooms_prices[0][0] + " + $" + rooms_prices[0][2] + " per month" );
-        $( ".print_p2_silver_with_comp" ).append( rooms_prices[1][0] + " + $" + rooms_prices[1][2] + " per month" );
-        $( ".print_p2_bronze_with_comp" ).append( rooms_prices[2][0] + " + $" + rooms_prices[2][2] + " per month" );
+        $( ".print_p2_gold_with_comp" ).text( rooms_prices[0][0] + " + $" + rooms_prices[0][2] + " per month" );
+        $( ".print_p2_silver_with_comp" ).text( rooms_prices[1][0] + " + $" + rooms_prices[1][2] + " per month" );
+        $( ".print_p2_bronze_with_comp" ).text( rooms_prices[2][0] + " + $" + rooms_prices[2][2] + " per month" );
 
         $( "#p3_choices" ).show( "slow" );
         $( "#p2_choices_2" ).hide( "slow" );
@@ -267,13 +238,13 @@ $(function() {
         rooms_prices.splice(p3_gold, 1);
         rooms_prices.unshift(p3_gold_array);
 
-        $( ".print_p3_room" ).append( rooms_prices[0][0] );
-        $( ".print_p2_room" ).append( rooms_prices[1][0] );
-        $( ".print_p1_room" ).append( rooms_prices[2][0] );
+        $( ".print_p3_room" ).text( rooms_prices[0][0] );
+        $( ".print_p2_room" ).text( rooms_prices[1][0] );
+        $( ".print_p1_room" ).text( rooms_prices[2][0] );
 
-        $( ".print_p3_price" ).append( rooms_prices[0][1].toFixed(2) );
-        $( ".print_p2_price" ).append( rooms_prices[1][1].toFixed(2) );
-        $( ".print_p1_price" ).append( rooms_prices[2][1].toFixed(2) );
+        $( ".print_p3_price" ).text( rooms_prices[0][1].toFixed(2) );
+        $( ".print_p2_price" ).text( rooms_prices[1][1].toFixed(2) );
+        $( ".print_p1_price" ).text( rooms_prices[2][1].toFixed(2) );
 
         $( "#results" ).show( "slow" );
         $( "#p3_choices" ).hide( "slow" );
