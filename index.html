@@ -37,7 +37,7 @@
 		Now, please tell me the total rent for the home.
 	</p>
 	<p>
-	  Rent: <input type="number" id="total_rent"><br />
+	  Rent: $<input type="number" id="total_rent"><br />
 	</p>
 	<p>
 	  <button id="player_room_submit">Submit!</button>
@@ -61,7 +61,13 @@
 
 <div id="p1_choices_2" class="new_section">
 
-	<p> Thanks! For any given room except for your favourite, there should be some amount of extra cash that would make you equally happy between taking the less-favourite room + the extra cash and taking your favourite room with no extra cash.
+	<p> Thanks! For any given room except for your favourite, there should be some amount of extra cash that would make you equally happy between having
+		<br />
+		the less-favourite room + some extra cash each month 
+		<br />
+		and having 
+		<br />
+		your favourite room with no extra cash.
 	<br />
 	<br />
 	For your second-favourite room, how much cash would you need to make the overall bundle feel equally-good as getting your favourite room with no extra cash?
@@ -83,7 +89,8 @@
 	(<em>bonus should be higher than bonus chosen for second-favourite room</em>)
 
 	</p>
-	<p>THIRD-FAVOURITE ROOM 
+	<p>THIRD-FAVOURITE ROOM
+	<br /> 
 	  <span class="print_p1_bronze_room"></span> + $<label for="p1_bronze_amount"></label>
 	  <input type="text" id="p1_bronze_amount" readonly style="border:0; color:#f6931f; font-size: 22px; font-weight:bold; width: 60px;"> per month = <span class="print_p1_gold_room"></span> + $0 per month.
 	</p>
@@ -164,16 +171,16 @@
 		<br />
 		<br />
 		
-		<input type="radio" name="p3_gold" value="0"><span class="print_p2_gold_comp"></span> 
+		<input type="radio" name="p3_gold" value="0"><span class="print_p2_gold_with_comp"></span> 
 		
 		<br />
 		
-		<input type="radio" name="p3_gold" value="1"><span class="print_p2_silver_comp"></span> 
+		<input type="radio" name="p3_gold" value="1"><span class="print_p2_silver_with_comp"></span> 
 		
 		<br />
 
 		<input type="radio" name="p3_gold" value="2">
-		<span class="print_p2_bronze_comp"></span>
+		<span class="print_p2_bronze_with_comp"></span>
 	
 	</p>
 	
