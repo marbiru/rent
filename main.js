@@ -10,7 +10,7 @@ var r1_name = "";
 var r2_name = "";
 var r3_name = "";
 
-// the main array for storing prices and room names. It gets updated after each player's move. It is an array of three arrays, each of which has the name of a room, the room's current rent/price, and the most recent "compensation" for that room.
+// the main array for storing room names, rents and "compensations". It gets updated after each player's move. It is an array of three arrays, each of which has the name of a room, the room's current rent/price, and the most recent "compensation" for that room.
 
 var rooms_prices = [
     ["", "", ""],
@@ -18,18 +18,7 @@ var rooms_prices = [
     ["", "", ""],
 ];
 
-// variables decided by player 1
-var p1_gold = "";
-var p1_silver = "";
-var p1_bronze = "";
-
-// vars decided by player 2
-var p2_gold = "";
-var p2_silver = "";
 var side_pot = "";
-
-// vars decided by player 3
-var p3_gold = "";
 
 $(function() {
     $( "#player_room_submit" ).click(function(){
@@ -46,7 +35,7 @@ $(function() {
         rooms_prices[1][0] = r2_name;
         rooms_prices[2][0] = r3_name;
 
-        total_rent = $( "#total_rent" ).val();
+        total_rent = parseInt($( "#total_rent" ).val());
 
         $( ".print_p1" ).text( p1_name );
         $( ".print_p2" ).text( p2_name );
@@ -66,9 +55,9 @@ $(function() {
 
         var sortedIDs = $( "#sortable" ).sortable( "toArray", {attribute: "value"} );
 
-        p1_gold = Number(sortedIDs[0]);
-        p1_silver = Number(sortedIDs[1]);
-        p1_bronze = Number(sortedIDs[2]);
+        var p1_gold = Number(sortedIDs[0]);
+        var p1_silver = Number(sortedIDs[1]);
+        var p1_bronze = Number(sortedIDs[2]);
         
         var p1_gold_array = rooms_prices[p1_gold];
         var p1_silver_array = rooms_prices[p1_silver];
@@ -86,6 +75,7 @@ $(function() {
 
         $( "#p1_choices_2" ).show( "slow" );
         $( "#p1_choices_1" ).hide( "slow" );
+
     });
 });
 
@@ -161,9 +151,9 @@ $(function() {
         
         var sortedIDs_p2 = $( "#sortable_p2" ).sortable( "toArray", {attribute: "value"} );
 
-        p2_gold = Number(sortedIDs_p2[0]);
-        p2_silver = Number(sortedIDs_p2[1]);
-        p2_bronze = Number(sortedIDs_p2[2]);
+        var p2_gold = Number(sortedIDs_p2[0]);
+        var p2_silver = Number(sortedIDs_p2[1]);
+        var p2_bronze = Number(sortedIDs_p2[2]);
         
         var p2_gold_array = rooms_prices[p2_gold];
         var p2_silver_array = rooms_prices[p2_silver];
@@ -219,7 +209,6 @@ $(function() {
         rooms_prices[1][1] = rooms_prices[1][1] - side_pot/3.0;
         rooms_prices[2][1] = rooms_prices[2][1] - side_pot/3.0;
 
-
         $( ".print_p2_gold_with_comp" ).text( rooms_prices[0][0] + " + $" + rooms_prices[0][2] + " per month" );
         $( ".print_p2_silver_with_comp" ).text( rooms_prices[1][0] + " + $" + rooms_prices[1][2] + " per month" );
         $( ".print_p2_bronze_with_comp" ).text( rooms_prices[2][0] + " + $" + rooms_prices[2][2] + " per month" );
@@ -229,6 +218,7 @@ $(function() {
 
     });
 });
+
 
 $(function() {
     $( "#p3_submit" ).click(function(){
