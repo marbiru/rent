@@ -5,11 +5,6 @@ var p1_name = "";
 var p2_name = "";
 var p3_name = "";
 
-// r1 is room 1, etc
-var r1_name = "";
-var r2_name = "";
-var r3_name = "";
-
 // the main array for storing room names, rents and "compensations". It gets updated after each player's move. It is an array of three arrays, each of which has the name of a room, the room's current rent/price, and the most recent "compensation" for that room.
 
 var rooms_prices = [
@@ -33,14 +28,10 @@ $(function() {
     	p1_name = $( "#p1_name" ).val();
         p2_name = $( "#p2_name" ).val();
         p3_name = $( "#p3_name" ).val();
-        
-        r1_name = $( "#r1_name" ).val();
-        r2_name = $( "#r2_name" ).val();
-        r3_name = $( "#r3_name" ).val();
 
-        rooms_prices[0][0] = r1_name;
-        rooms_prices[1][0] = r2_name;
-        rooms_prices[2][0] = r3_name;
+        rooms_prices[0][0] = $( "#r1_name" ).val();
+        rooms_prices[1][0] = $( "#r2_name" ).val();
+        rooms_prices[2][0] = $( "#r3_name" ).val();
 
         total_rent = parseInt($( "#total_rent" ).val());
 
@@ -48,9 +39,9 @@ $(function() {
         $( ".print_p2" ).text( p2_name );
         $( ".print_p3" ).text( p3_name );
 
-        $( ".print_r1" ).text( r1_name );
-        $( ".print_r2" ).text( r2_name );
-        $( ".print_r3" ).text( r3_name );
+        $( ".print_r1" ).text( rooms_prices[0][0] );
+        $( ".print_r2" ).text( rooms_prices[1][0] );
+        $( ".print_r3" ).text( rooms_prices[2][0] );
 
         transition("#general_info", "#p1_choices_1");
 
@@ -118,6 +109,10 @@ $(function() {
 
 });
 
+function print_comp(room_name) {
+    return room_name[0] + " + $" + room_name[2] + " per month"
+};
+
 $(function() {
     $( "#p1_submit" ).click(function(){
 
@@ -135,10 +130,6 @@ $(function() {
         rooms_prices[0][1] = tally_p1_divided;
         rooms_prices[1][1] = tally_p1_divided - p1_silver_comp;
         rooms_prices[2][1] = tally_p1_divided - p1_bronze_comp;
-
-        function print_comp(room_name) {
-            return room_name[0] + " + $" + room_name[2] + " per month"
-        };
 
         $( ".print_p1_gold_comp" ).text( print_comp(rooms_prices[0]) );
         $( ".print_p1_silver_comp" ).text( print_comp(rooms_prices[1]));
@@ -213,9 +204,9 @@ $(function() {
         rooms_prices[1][1] -= side_pot_divided;
         rooms_prices[2][1] -= side_pot_divided;
 
-        $( ".print_p2_gold_with_comp" ).text( rooms_prices[0][0] + " + $" + rooms_prices[0][2] + " per month" );
-        $( ".print_p2_silver_with_comp" ).text( rooms_prices[1][0] + " + $" + rooms_prices[1][2] + " per month" );
-        $( ".print_p2_bronze_with_comp" ).text( rooms_prices[2][0] + " + $" + rooms_prices[2][2] + " per month" );
+        $( ".print_p2_gold_with_comp" ).text( print_comp(rooms_prices[0]) );
+        $( ".print_p2_silver_with_comp" ).text( print_comp(rooms_prices[1]) );
+        $( ".print_p2_bronze_with_comp" ).text( print_comp(rooms_prices[2]) );
 
         transition("#p2_choices_2", "#p3_choices");
 
