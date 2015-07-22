@@ -48,10 +48,9 @@ $(function() {
     });
 }); 
 
-$(function() {
-    $( "#p1_continue" ).click(function(){
+function rearrange( unordered_list ) {
 
-        var sortedIDs = $( "#sortable" ).sortable( "toArray", {attribute: "value"} );
+        var sortedIDs = $( unordered_list ).sortable( "toArray", {attribute: "value"} );
 
         var p1_gold = Number(sortedIDs[0]);
         var p1_silver = Number(sortedIDs[1]);
@@ -66,6 +65,13 @@ $(function() {
             p1_silver_array, 
             p1_bronze_array
         ];
+
+};
+
+$(function() {
+    $( "#p1_continue" ).click(function(){
+
+        rearrange( "#sortable" );
 
         $( ".print_p1_gold_room" ).text( rooms_prices[0][0] );
         $( ".print_p1_silver_room" ).text( rooms_prices[1][0] );
@@ -143,7 +149,9 @@ $(function() {
 $(function() {
     $( "#p2_continue" ).click(function(){
         
-        var sortedIDs_p2 = $( "#sortable_p2" ).sortable( "toArray", {attribute: "value"} );
+        rearrange( "#sortable_p2" );
+
+        /* var sortedIDs_p2 = $( "#sortable_p2" ).sortable( "toArray", {attribute: "value"} );
 
         var p2_gold = Number(sortedIDs_p2[0]);
         var p2_silver = Number(sortedIDs_p2[1]);
@@ -157,7 +165,7 @@ $(function() {
             p2_gold_array, 
             p2_silver_array, 
             p2_bronze_array
-        ];
+        ]; */
 
         $( ".print_p2_gold_room" ).text( rooms_prices[0][0] );
         $( ".print_p2_gold_comp" ).text( rooms_prices[0][2] );
