@@ -18,9 +18,6 @@ var rooms_prices = [
     ["", "", ""],
 ];
 
-// the side pot is the adjustment that p2 makes
-var side_pot = "";
-
 // transition function switches us between pages
 
 function transition(this_page, next_page) {
@@ -206,13 +203,15 @@ $(function() {
 
         var p2_silver_comp = parseInt($( "#p2_silver_amount" ).val());
 
-        side_pot = p2_silver_comp - parseInt(rooms_prices[1][2]);
+        var side_pot = p2_silver_comp - parseInt(rooms_prices[1][2]);
 
-        rooms_prices[0][2] = rooms_prices[0][2] - side_pot;
+        var side_pot_divided = side_pot/3.0;
 
-        rooms_prices[0][1] = rooms_prices[0][1] + (2*side_pot)/3.0;
-        rooms_prices[1][1] = rooms_prices[1][1] - side_pot/3.0;
-        rooms_prices[2][1] = rooms_prices[2][1] - side_pot/3.0;
+        rooms_prices[0][2] -= side_pot;
+
+        rooms_prices[0][1] += 2*side_pot_divided;
+        rooms_prices[1][1] -= side_pot_divided;
+        rooms_prices[2][1] -= side_pot_divided;
 
         $( ".print_p2_gold_with_comp" ).text( rooms_prices[0][0] + " + $" + rooms_prices[0][2] + " per month" );
         $( ".print_p2_silver_with_comp" ).text( rooms_prices[1][0] + " + $" + rooms_prices[1][2] + " per month" );
@@ -228,7 +227,9 @@ $(function() {
     $( "#p3_submit" ).click(function(){
 
         p3_gold = $('input[name=p3_gold]:checked').val();
+        
         var p3_gold_array = rooms_prices[p3_gold];
+        
         rooms_prices.splice(p3_gold, 1);
         rooms_prices.unshift(p3_gold_array);
 
