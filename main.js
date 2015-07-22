@@ -18,7 +18,18 @@ var rooms_prices = [
     ["", "", ""],
 ];
 
+// the side pot is the adjustment that p2 makes
 var side_pot = "";
+
+// transition function switches us between pages
+
+function transition(this_page, next_page) {
+    $( this_page ).hide( "slow" );
+    $( next_page ).show( "slow" );
+};
+
+// and now we begin
+
 
 $(function() {
     $( "#player_room_submit" ).click(function(){
@@ -45,8 +56,8 @@ $(function() {
         $( ".print_r2" ).text( r2_name );
         $( ".print_r3" ).text( r3_name );
 
-        $( "#p1_choices_1" ).show( "slow" );
-        $( "#general_info" ).hide( "slow" );
+        transition("#general_info", "#p1_choices_1");
+
     });
 }); 
 
@@ -73,30 +84,30 @@ $(function() {
         $( ".print_p1_silver_room" ).text( rooms_prices[1][0] );
         $( ".print_p1_bronze_room" ).text( rooms_prices[2][0] );
 
-        $( "#p1_choices_2" ).show( "slow" );
-        $( "#p1_choices_1" ).hide( "slow" );
+        transition("#p1_choices_1", "#p1_choices_2");
 
     });
 });
 
 // from jQueryUI: Slider https://jqueryui.com/slider/#steps
 
-$(function() {
-   $( "#p1_continue" ).click(function(){
-       $( "#p1_silver_slider" ).slider({
-         value: 1,
-         min: 1,
-         max: total_rent/3.0,
-         step: 1,
-          slide: function( event, ui ) {
-            $( "#p1_silver_amount" ).val( ui.value );
-          }
-        });
 
-        $( "#p1_silver_amount" ).val( $( "#p1_silver_slider" ).slider( "value" ) );
+//THIS DOESN'T WORK YET
+/* var p1_slider() = $(function(slider_name, amount_name) {
+   $( "#slider_name" ).slider({
+     value: 1,
+     min: 1,
+     max: total_rent/3.0,
+     step: 1,
+      slide: function( event, ui ) {
+        $( "#amount_name" ).val( ui.value );
+      }
     });
+
+    $( "#amount_name" ).val( $( "#slider_name" ).slider( "value" ) );
 });
 
+$( "#p1_continue" ).click(p1_slider(p1_silver_slider, p1_silver_amount)); */
 
 // should re-write this and previous slider function as generalised functions of slider, amount
 
@@ -138,8 +149,7 @@ $(function() {
         $( ".print_p1_silver_comp" ).text( rooms_prices[1][0] + " + $" + rooms_prices[1][2] + " per month" );
         $( ".print_p1_bronze_comp" ).text( rooms_prices[2][0] + " + $" + rooms_prices[2][2] + " per month" );
 
-        $( "#p2_choices_1" ).show( "slow" );
-        $( "#p1_choices_2" ).hide( "slow" );
+        transition("#p1_choices_2", "#p2_choices_1");
 
     });
 });
@@ -171,8 +181,7 @@ $(function() {
         $( ".print_p2_silver_room" ).text( rooms_prices[1][0] );
         $( ".print_p2_bronze_room" ).text( rooms_prices[2][0] );
 
-        $( "#p2_choices_2" ).show( "slow" );
-        $( "#p2_choices_1" ).hide( "slow" );
+        transition("#p2_choices_1", "#p2_choices_2");
 
     });
 });
@@ -213,8 +222,7 @@ $(function() {
         $( ".print_p2_silver_with_comp" ).text( rooms_prices[1][0] + " + $" + rooms_prices[1][2] + " per month" );
         $( ".print_p2_bronze_with_comp" ).text( rooms_prices[2][0] + " + $" + rooms_prices[2][2] + " per month" );
 
-        $( "#p3_choices" ).show( "slow" );
-        $( "#p2_choices_2" ).hide( "slow" );
+        transition("#p2_choices_2", "#p3_choices");
 
     });
 });
@@ -236,8 +244,7 @@ $(function() {
         $( ".print_p2_price" ).text( rooms_prices[1][1].toFixed(2) );
         $( ".print_p1_price" ).text( rooms_prices[2][1].toFixed(2) );
 
-        $( "#results" ).show( "slow" );
-        $( "#p3_choices" ).hide( "slow" );
+        transition("#p3_choices", "#results");
 
     });
 });
