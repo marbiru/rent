@@ -28,8 +28,7 @@ function transition(this_page, next_page) {
     $( next_page ).show( "slow" );
 };
 
-// and now we begin
-
+// and now we begin. Get info from players.
 
 $(function() {
     $( "#player_room_submit" ).click(function(){
@@ -91,29 +90,22 @@ $(function() {
 
 // from jQueryUI: Slider https://jqueryui.com/slider/#steps
 
-
-//THIS DOESN'T WORK YET
-/* var p1_slider() = $(function(slider_name, amount_name) {
-   $( "#slider_name" ).slider({
-     value: 1,
-     min: 1,
-     max: total_rent/3.0,
-     step: 1,
-      slide: function( event, ui ) {
-        $( "#amount_name" ).val( ui.value );
-      }
-    });
-
-    $( "#amount_name" ).val( $( "#slider_name" ).slider( "value" ) );
-});
-
-$( "#p1_continue" ).click(p1_slider(p1_silver_slider, p1_silver_amount)); */
-
-// should re-write this and previous slider function as generalised functions of slider, amount
-
 $(function() {
     $( "#p1_continue" ).click(function(){
-        $( "#p1_bronze_slider" ).slider({
+        
+        $( "#p1_silver_slider" ).slider({
+         value: 1,
+         min: 1,
+         max: total_rent/3.0,
+         step: 1,
+          slide: function( event, ui ) {
+            $( "#p1_silver_amount" ).val( ui.value );
+          }
+        });
+
+        $( "#p1_silver_amount" ).val( $( "#p1_silver_slider" ).slider( "value" ) );
+
+     $( "#p1_bronze_slider" ).slider({
          value: 1,
          min: 1,
          max: total_rent/3.0,
@@ -123,8 +115,10 @@ $(function() {
           }
         });
 
-        $( "#p1_bronze_amount" ).val( $( "#p1_bronze_slider" ).slider( "value" ) );
+        $( "#p1_bronze_amount" ).val( $( "#p1_bronze_slider" ).slider( "value" ) );    
+    
     });
+
 });
 
 $(function() {
@@ -145,16 +139,18 @@ $(function() {
         rooms_prices[1][1] = tally_p1_divided - p1_silver_comp;
         rooms_prices[2][1] = tally_p1_divided - p1_bronze_comp;
 
-        $( ".print_p1_gold_comp" ).text( rooms_prices[0][0] + " + $" + rooms_prices[0][2] + " per month" );
-        $( ".print_p1_silver_comp" ).text( rooms_prices[1][0] + " + $" + rooms_prices[1][2] + " per month" );
-        $( ".print_p1_bronze_comp" ).text( rooms_prices[2][0] + " + $" + rooms_prices[2][2] + " per month" );
+        function print_comp(room_name) {
+            return room_name[0] + " + $" + room_name[2] + " per month"
+        };
+
+        $( ".print_p1_gold_comp" ).text( print_comp(rooms_prices[0]) );
+        $( ".print_p1_silver_comp" ).text( print_comp(rooms_prices[1]));
+        $( ".print_p1_bronze_comp" ).text( print_comp(rooms_prices[2]));
 
         transition("#p1_choices_2", "#p2_choices_1");
 
     });
 });
-
-// is this an exact replica of p1_continue? Could those two functions be generalised, then?
 
 $(function() {
     $( "#p2_continue" ).click(function(){
