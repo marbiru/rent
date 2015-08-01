@@ -68,6 +68,18 @@ function rearrange( unordered_list ) {
 
 };
 
+// from jQuery UI: Sortable https://jqueryui.com/sortable/#default
+
+$(function() {
+   $( "#sortable" ).sortable();
+   $( "#sortable" ).disableSelection();
+ });
+
+$(function() {
+   $( "#sortable_p2" ).sortable();
+   $( "#sortable_p2" ).disableSelection();
+ });
+
 $(function() {
     $( "#p1_continue" ).click(function(){
 
@@ -82,37 +94,32 @@ $(function() {
     });
 });
 
-// from jQueryUI: Slider https://jqueryui.com/slider/#steps
-
 $(function() {
     $( "#p1_continue" ).click(function(){
         
-        $( "#p1_silver_slider" ).slider({
-         value: 1,
-         min: 1,
-         max: total_rent/3.0,
-         step: 1,
-          slide: function( event, ui ) {
-            $( "#p1_silver_amount" ).val( ui.value );
-          }
-        });
+        // slider from jQueryUI: Slider https://jqueryui.com/slider/#steps -- this code is not meaningfully mine
 
-        $( "#p1_silver_amount" ).val( $( "#p1_silver_slider" ).slider( "value" ) );
+        function slider( slider_name, amount ) {
 
-     $( "#p1_bronze_slider" ).slider({
-         value: 1,
-         min: 1,
-         max: total_rent/3.0,
-         step: 1,
-          slide: function( event, ui ) {
-            $( "#p1_bronze_amount" ).val( ui.value );
-          }
-        });
+            $( slider_name ).slider({
+             value: 1,
+             min: 1,
+             max: total_rent/3.0,
+             step: 1,
+              slide: function( event, ui ) {
+                $( amount ).val( ui.value );
+              }
+            });
 
-        $( "#p1_bronze_amount" ).val( $( "#p1_bronze_slider" ).slider( "value" ) );    
+            $( amount ).val( $( slider_name ).slider( "value" ) );
+
+        };        
+
+        slider( "#p1_silver_slider", "#p1_silver_amount");
+
+        slider( "#p1_bronze_slider", "#p1_silver_amount" );    
     
     });
-
 });
 
 function print_comp(room_name) {
@@ -151,22 +158,6 @@ $(function() {
         
         rearrange( "#sortable_p2" );
 
-        /* var sortedIDs_p2 = $( "#sortable_p2" ).sortable( "toArray", {attribute: "value"} );
-
-        var p2_gold = Number(sortedIDs_p2[0]);
-        var p2_silver = Number(sortedIDs_p2[1]);
-        var p2_bronze = Number(sortedIDs_p2[2]);
-        
-        var p2_gold_array = rooms_prices[p2_gold];
-        var p2_silver_array = rooms_prices[p2_silver];
-        var p2_bronze_array = rooms_prices[p2_bronze];
-
-        rooms_prices = [
-            p2_gold_array, 
-            p2_silver_array, 
-            p2_bronze_array
-        ]; */
-
         $( ".print_p2_gold_room" ).text( rooms_prices[0][0] );
         $( ".print_p2_gold_comp" ).text( rooms_prices[0][2] );
 
@@ -183,6 +174,7 @@ $(function() {
     $( "#p2_continue" ).click(function(){
 
         var p2_silver_init = rooms_prices[1][2];
+
        $( "#p2_silver_slider" ).slider({
          value: p2_silver_init,
          min: p2_silver_init,
@@ -198,6 +190,7 @@ $(function() {
 });
 
 $(function() {
+
     $( "#p2_submit" ).click(function(){
 
         var p2_silver_comp = parseInt($( "#p2_silver_amount" ).val());
@@ -220,7 +213,6 @@ $(function() {
 
     });
 });
-
 
 $(function() {
     $( "#p3_submit" ).click(function(){
