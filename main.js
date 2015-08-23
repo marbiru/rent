@@ -119,7 +119,7 @@ $(function() {
 
         slider( "#p1_silver_slider", "#p1_silver_amount");
 
-        slider( "#p1_bronze_slider", "#p1_silver_amount" );    
+        slider( "#p1_bronze_slider", "#p1_bronze_amount" );    
     
     });
 });
