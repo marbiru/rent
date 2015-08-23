@@ -1,3 +1,5 @@
+// tk todo: make total_rent input field positive numbers only
+
 var total_rent = "";
 
 // p1 is player 1, etc
@@ -25,13 +27,13 @@ function transition(this_page, next_page) {
 $(function() {
     $( "#player_room_submit" ).click(function(){
 
-    	p1_name = $( "#p1_name" ).val();
-        p2_name = $( "#p2_name" ).val();
-        p3_name = $( "#p3_name" ).val();
+    	p1_name = ($( "#p1_name" ).val() || "Player 1");
+        p2_name = ($( "#p2_name" ).val() || "Player 2");
+        p3_name = ($( "#p3_name" ).val() || "Player 3");
 
-        rooms_prices[0][0] = $( "#r1_name" ).val();
-        rooms_prices[1][0] = $( "#r2_name" ).val();
-        rooms_prices[2][0] = $( "#r3_name" ).val();
+        rooms_prices[0][0] = ($( "#r1_name" ).val() || "The First Room");
+        rooms_prices[1][0] = ($( "#r2_name" ).val() || "The Second Room");
+        rooms_prices[2][0] = ($( "#r3_name" ).val() || "The Third Room");
 
         total_rent = parseInt($( "#total_rent" ).val());
 
@@ -117,7 +119,7 @@ $(function() {
 
         slider( "#p1_silver_slider", "#p1_silver_amount");
 
-        slider( "#p1_bronze_slider", "#p1_silver_amount" );    
+        slider( "#p1_bronze_slider", "#p1_bronze_amount" );    
     
     });
 });
