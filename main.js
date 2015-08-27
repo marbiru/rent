@@ -35,7 +35,13 @@ $(function() {
         rooms_prices[1][0] = ($( "#r2_name" ).val() || "The Second Room");
         rooms_prices[2][0] = ($( "#r3_name" ).val() || "The Third Room");
 
-        total_rent = parseInt($( "#total_rent" ).val());
+        rent_input = parseInt($( "#total_rent" ).val());
+
+        if (rent_input > 0) {
+            total_rent = rent_input;
+        } else {
+            alert("Rent must be greater than 0");
+        };
 
         $( ".print_p1" ).text( p1_name );
         $( ".print_p2" ).text( p2_name );
