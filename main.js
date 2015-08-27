@@ -35,14 +35,6 @@ $(function() {
         rooms_prices[1][0] = ($( "#r2_name" ).val() || "The Second Room");
         rooms_prices[2][0] = ($( "#r3_name" ).val() || "The Third Room");
 
-        rent_input = parseInt($( "#total_rent" ).val());
-
-        if (rent_input > 0) {
-            total_rent = rent_input;
-        } else {
-            alert("Rent must be greater than 0");
-        };
-
         $( ".print_p1" ).text( p1_name );
         $( ".print_p2" ).text( p2_name );
         $( ".print_p3" ).text( p3_name );
@@ -51,7 +43,15 @@ $(function() {
         $( ".print_r2" ).text( rooms_prices[1][0] );
         $( ".print_r3" ).text( rooms_prices[2][0] );
 
-        transition("#general_info", "#p1_choices_1");
+        total_rent = parseInt($( "#total_rent" ).val());
+
+        if (total_rent > 0) {
+            transition("#general_info", "#p1_choices_1");
+        } else {
+            alert("Rent amount must be greater than 0");
+        }
+
+        
 
     });
 }); 
